@@ -115,6 +115,33 @@
   }
   .portrait{width:13rem;float:right;margin:0.4rem 0 1.2rem 2rem;display:block}
   @media(max-width:560px){ .portrait{float:none;width:10rem;margin:0 0 1.4rem} }
+  /* ---- brochure signup form ---- */
+  .signup{background:var(--paper-alt);padding:2.2rem;margin-top:2rem}
+  .signup label{
+    display:block;font-family:system-ui,-apple-system,sans-serif;
+    font-size:0.9rem;margin:0 0 0.4rem
+  }
+  .signup input[type=text],.signup input[type=email]{
+    font-family:Georgia,serif;font-size:1.15rem;padding:0.7rem 0.8rem;
+    width:100%;max-width:22rem;border:1px solid var(--rule);background:#fff;
+    color:var(--ink);margin-bottom:1.4rem;display:block
+  }
+  .signup fieldset{border:0;padding:0;margin:0 0 1.2rem}
+  .signup legend{
+    font-family:system-ui,-apple-system,sans-serif;font-size:0.9rem;
+    padding:0;margin-bottom:0.7rem;max-width:34rem;line-height:1.5
+  }
+  .signup label.radio{
+    display:inline-flex;align-items:center;gap:0.5rem;
+    margin:0 1.6rem 0 0;font-size:1rem;font-family:Georgia,serif
+  }
+  .signup label.radio input{margin:0}
+  .signup .note{
+    font-family:system-ui,-apple-system,sans-serif;font-size:0.82rem;
+    color:var(--ink-soft);line-height:1.5;max-width:34rem;margin:0 0 1.5rem
+  }
+  .signup .btn{font-family:system-ui,-apple-system,sans-serif}
+  @media(max-width:520px){ .signup{padding:1.5rem} }
   .guarantee{border:1px solid var(--accent);padding:1.8rem;margin:2rem 0}
   .guarantee h3{color:var(--accent);margin-bottom:0.6rem}
   footer{background:var(--ink);color:var(--paper-alt);padding:3rem 0;font-size:0.85rem;font-family:system-ui,-apple-system,sans-serif}
@@ -438,17 +465,45 @@
     <p>Everything above, in detail — the full programme structure, the session plan, what's
       included, and how the year runs.</p>
 
-    <!-- ============================================================
-         BREVO FORM GOES HERE
-         Brevo → Contacts → Forms → create form → Share → copy the
-         embed code and paste it in place of this comment block.
-         Set the form to add contacts to your "Closing The Gap" list
-         and to send the brochure PDF as the confirmation email.
-         ============================================================ -->
-    <div style="background:var(--paper-alt);padding:2rem;text-align:center;
-                font-family:system-ui,sans-serif;color:var(--ink-soft)">
-      [ Brevo embed form — name + email → sends the brochure ]
+    <!-- ===================== BREVO SIGNUP FORM =====================
+         Posts to Brevo's "Closing The Gap - brochure download" form.
+         Adds the contact to Main list (#9) and Closing The Gap (#10),
+         and Brevo sends the brochure email automatically.
+         Submitting targets a hidden iframe so the visitor stays here.
+         ============================================================== -->
+    <div class="signup" id="signupbox">
+      <form id="brochureform" method="POST" target="brevo_sink"
+        action="https://fc846cc2.sibforms.com/serve/MUIFABK3RyhY8BqMHh_ZdNcm192_zUAGM73oyyPVdve5nswdGUrzs8N1WGB8FQIFfEnutlbneNcdlZeS2vsiYsxqqNjPfvZBOyRJ2Uotb_efN5zIozFuVv1ixwCTaM1Vuy_khYPF8SxsUrAgBXL18RwtavH7XXYEe9IMQJJ7h9PJytRv5rmYApD9hi2rw_S1WzRlqX8UAkbPt7ZPbQ==">
+
+        <label for="FIRSTNAME">First name</label>
+        <input id="FIRSTNAME" name="FIRSTNAME" type="text" maxlength="200" autocomplete="given-name" required>
+
+        <label for="EMAIL">Email</label>
+        <input id="EMAIL" name="EMAIL" type="email" autocomplete="email" required>
+
+        <fieldset>
+          <legend>Do you want to hear about in-person events in London, including the
+            Negotiation Supper Club?</legend>
+          <label class="radio"><input type="radio" name="LONDON_EVENTS" value="1" required> Yes</label>
+          <label class="radio"><input type="radio" name="LONDON_EVENTS" value="2" required> No</label>
+        </fieldset>
+
+        <p class="note">I'll email you the brochure, and occasional updates about Closing The Gap
+          and my events. Unsubscribe any time.</p>
+
+        <!-- honeypot: real people never fill this in -->
+        <input type="text" name="email_address_check" value="" tabindex="-1"
+               autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px">
+        <input type="hidden" name="locale" value="en">
+        <input type="hidden" name="html_type" value="simple">
+
+        <button class="btn" type="submit">Send me the brochure</button>
+      </form>
+
+      <p id="signupdone" style="display:none;margin:0;font-size:1.15rem">
+        On its way — it should reach your inbox within a minute.</p>
     </div>
+    <iframe name="brevo_sink" style="display:none" title="form target"></iframe>
   </div>
 </section>
 
@@ -528,6 +583,27 @@
 })();
 </script>
 
+
+<!-- ===================== SIGNUP FORM =====================
+     The form posts into a hidden iframe, so the visitor stays on the page.
+     We swap the form for the confirmation line rather than navigating away.
+     ======================================================================= -->
+<script>
+(function(){
+  var f = document.getElementById('brochureform');
+  if (!f) return;
+  f.addEventListener('submit', function(){
+    // let the real POST proceed into the hidden iframe, then swap the UI
+    setTimeout(function(){
+      f.style.display = 'none';
+      document.getElementById('signupdone').style.display = 'block';
+      if (typeof gtag === 'function') gtag('event', 'brochure_request', {
+        source: (window.__attrib && window.__attrib.utm_source) || 'direct'
+      });
+    }, 300);
+  });
+})();
+</script>
 
 <!-- ===================== ATTRIBUTION (UTM FORWARDING) =====================
      Captures campaign parameters on arrival, remembers them for 30 days,
