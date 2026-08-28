@@ -3,90 +3,772 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Negotiate Like a Woman — Lucy Watson</title>
-<meta name="description" content="Negotiation strategy for women. Programmes, one-to-one support and events, from Lucy Watson.">
-<link rel="canonical" href="https://negotiatelikeawoman.co/">
+<title>Closing The Gap — a 12-month programme by Negotiate Like a Woman</title>
+<meta name="description" content="A 12-month negotiation programme for no more than eight women. Two months of method, ten months of applying it — with support when the conversation that matters arrives.">
+
+<!-- ===================== SOCIAL PREVIEW =====================
+     og:url and og:image must be absolute URLs or LinkedIn renders
+     nothing. Update these if the address ever changes.
+     ========================================================== -->
+<link rel="canonical" href="https://negotiatelikeawoman.co/closing-the-gap/">
 <meta property="og:site_name" content="Negotiate Like a Woman">
 <meta property="og:locale" content="en_GB">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://negotiatelikeawoman.co/">
-<meta property="og:title" content="Negotiate Like a Woman — Lucy Watson">
-<meta property="og:description" content="Negotiation strategy for women. Programmes, one-to-one support and events.">
+<meta property="og:url" content="https://negotiatelikeawoman.co/closing-the-gap/">
+<meta property="og:title" content="Closing The Gap — a 12-month programme by Negotiate Like a Woman">
+<meta property="og:description" content="From undervalued and overlooked, to securing the reward, respect and influence your work deserves. Applications close 9 October.">
+<meta property="og:image" content="https://negotiatelikeawoman.co/assets/og-closing-the-gap.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Closing The Gap — a 12-month programme by Negotiate Like a Woman">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Closing The Gap — a 12-month programme by Negotiate Like a Woman">
+<meta name="twitter:description" content="From undervalued and overlooked, to securing the reward, respect and influence your work deserves. Applications close 9 October.">
+<meta name="twitter:image" content="https://negotiatelikeawoman.co/assets/og-closing-the-gap.jpg">
 <style>
   :root{
-    --ink:#1a1f2b; --ink-soft:#4a5260; --paper:#fbf9f6; --paper-alt:#f2ede7;
-    --accent:#7d2b3f; --accent-soft:#a8536a; --rule:#ddd5cb;
+    --ink:#1a1f2b;
+    --ink-soft:#4a5260;
+    --paper:#fbf9f6;
+    --paper-alt:#f2ede7;
+    --accent:#7d2b3f;
+    --accent-soft:#a8536a;
+    --rule:#ddd5cb;
+    --max:66rem;
   }
   *{box-sizing:border-box}
   body{
-    margin:0; background:var(--paper); color:var(--ink);
-    font-family:Georgia,'Times New Roman',serif; font-size:18px; line-height:1.65;
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:Georgia,'Times New Roman',serif;
+    font-size:18px;
+    line-height:1.65;
     -webkit-font-smoothing:antialiased;
-    display:flex; flex-direction:column; min-height:100vh;
   }
-  .wrap{max-width:44rem;margin:0 auto;padding:0 1.6rem;width:100%}
-  main{flex:1;display:flex;align-items:center;padding:4rem 0}
+  .wrap{max-width:var(--max);margin:0 auto;padding:0 1.6rem}
+  .narrow{max-width:40rem}
+  section{padding:4.5rem 0;border-bottom:1px solid var(--rule)}
+  section:last-of-type{border-bottom:none}
+  h1,h2,h3{line-height:1.2;font-weight:normal;margin:0 0 1.2rem}
+  h1{font-size:clamp(2.4rem,6vw,4rem);letter-spacing:-0.015em}
+  h2{font-size:clamp(1.7rem,3.4vw,2.4rem)}
+  h3{font-size:1.15rem;font-family:system-ui,-apple-system,sans-serif;letter-spacing:0.02em}
+  p{margin:0 0 1.2rem}
+  .lede{font-size:1.2rem;color:var(--ink-soft)}
   .kicker{
     font-family:system-ui,-apple-system,sans-serif;
     font-size:0.78rem;letter-spacing:0.18em;text-transform:uppercase;
     color:var(--accent);margin-bottom:1.4rem
   }
-  h1{font-size:clamp(2.2rem,5vw,3.2rem);font-weight:normal;line-height:1.15;margin:0 0 1.2rem}
-  p{margin:0 0 1.2rem}
-  .lede{font-size:1.15rem;color:var(--ink-soft)}
-  ul.links{list-style:none;padding:0;margin:2.4rem 0 0;border-top:1px solid var(--rule)}
-  ul.links li{border-bottom:1px solid var(--rule)}
-  ul.links a{
-    display:block;padding:1.1rem 0;text-decoration:none;color:var(--ink);
+  .hero{padding:5.5rem 0 4.5rem;background:var(--paper-alt)}
+  .hero .sub{font-size:1.35rem;color:var(--ink-soft);max-width:34rem;margin-bottom:2rem}
+  .facts{
+    display:flex;flex-wrap:wrap;gap:2.4rem;margin-top:2.4rem;
+    font-family:system-ui,-apple-system,sans-serif;font-size:0.9rem;
   }
-  ul.links a:hover{color:var(--accent)}
-  ul.links .t{font-size:1.15rem}
-  ul.links .d{
+  .facts div span{display:block;color:var(--accent);font-size:0.72rem;letter-spacing:0.14em;text-transform:uppercase;margin-bottom:0.25rem}
+  .btn{
+    display:inline-block;background:var(--accent);color:#fff;text-decoration:none;
+    padding:0.95rem 2rem;font-family:system-ui,-apple-system,sans-serif;
+    font-size:0.95rem;letter-spacing:0.03em;border:none;cursor:pointer;
+  }
+  .btn:hover{background:var(--accent-soft)}
+  .btn.ghost{background:none;color:var(--accent);border:1px solid var(--accent)}
+  .btn.ghost:hover{background:var(--accent);color:#fff}
+  .cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(15rem,1fr));gap:2.2rem}
+  .stage{border-top:2px solid var(--accent);padding-top:1rem}
+  .stage h3{margin-bottom:0.5rem}
+  .stage .out{font-size:0.85rem;color:var(--accent);font-family:system-ui,-apple-system,sans-serif}
+  blockquote{margin:0;padding:1.4rem 0 1.4rem 1.6rem;border-left:3px solid var(--accent);font-size:1.1rem}
+  blockquote cite{display:block;margin-top:0.7rem;font-size:0.85rem;font-style:normal;color:var(--ink-soft);font-family:system-ui,-apple-system,sans-serif}
+  .vids{display:grid;grid-template-columns:repeat(auto-fit,minmax(17rem,1fr));gap:1.6rem;margin-bottom:2.4rem}
+  .vid{position:relative;padding-bottom:56.25%;height:0;background:var(--paper-alt)}
+  .vid iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+  /* calculator */
+  .calc{background:var(--paper-alt);padding:2.4rem;margin-top:2rem}
+  .calc label{display:block;font-family:system-ui,-apple-system,sans-serif;font-size:0.9rem;margin-bottom:0.4rem}
+  .calc .field{margin-bottom:1.4rem}
+  .calc .field.two{display:grid;grid-template-columns:1fr 1fr;gap:1.4rem;align-items:start}
+  .calc .field.three{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem;align-items:start}
+  .calc .field.three input{max-width:100%}
+  .calc .hint{font-family:system-ui,-apple-system,sans-serif;font-size:0.78rem;
+    color:var(--ink-soft);margin:0.5rem 0 0;line-height:1.5}
+  @media(max-width:520px){ .calc .field.two,.calc .field.three{grid-template-columns:1fr} }
+  .calc input{
+    font-family:Georgia,serif;font-size:1.35rem;padding:0.6rem 0.8rem;width:100%;max-width:16rem;
+    border:1px solid var(--rule);background:#fff;color:var(--ink)
+  }
+  .result{margin-top:1.8rem;padding-top:1.8rem;border-top:1px solid var(--rule)}
+  .result .big{font-size:clamp(2rem,5vw,3rem);color:var(--accent);line-height:1.15;display:block;margin-bottom:0.6rem}
+  .result .muted{font-size:0.72rem;color:var(--ink-soft);font-family:system-ui,-apple-system,sans-serif;line-height:1.5;max-width:38rem}
+  .assump{margin:0;padding-left:1.1rem}
+  .assump li{margin-bottom:0.3rem}
+  .price{font-size:2.6rem;color:var(--accent);display:block;margin-bottom:0.3rem}
+  .steps{counter-reset:s;list-style:none;padding:0;margin:2rem 0}
+  .steps li{counter-increment:s;padding-left:2.6rem;position:relative;margin-bottom:1rem}
+  .steps li::before{
+    content:counter(s);position:absolute;left:0;top:0.1rem;
+    width:1.7rem;height:1.7rem;border:1px solid var(--accent);color:var(--accent);
+    display:flex;align-items:center;justify-content:center;font-size:0.85rem;
+    font-family:system-ui,-apple-system,sans-serif;border-radius:50%
+  }
+  .portrait{width:13rem;float:right;margin:0.4rem 0 1.2rem 2rem;display:block}
+  @media(max-width:560px){ .portrait{float:none;width:10rem;margin:0 0 1.4rem} }
+  /* ---- brochure signup form ---- */
+  .signup{background:var(--paper-alt);padding:2.2rem;margin-top:2rem}
+  .signup label{
     display:block;font-family:system-ui,-apple-system,sans-serif;
-    font-size:0.85rem;color:var(--ink-soft);margin-top:0.15rem
+    font-size:0.9rem;margin:0 0 0.4rem
   }
-  footer{
-    background:var(--ink);color:var(--paper-alt);padding:2.2rem 0;
-    font-size:0.85rem;font-family:system-ui,-apple-system,sans-serif
+  .signup input[type=text],.signup input[type=email]{
+    font-family:Georgia,serif;font-size:1.15rem;padding:0.7rem 0.8rem;
+    width:100%;max-width:22rem;border:1px solid var(--rule);background:#fff;
+    color:var(--ink);margin-bottom:1.4rem;display:block
   }
+  .signup fieldset{border:0;padding:0;margin:0 0 1.2rem}
+  .signup legend{
+    font-family:system-ui,-apple-system,sans-serif;font-size:0.9rem;
+    padding:0;margin-bottom:0.7rem;max-width:34rem;line-height:1.5
+  }
+  .signup label.radio{
+    display:inline-flex;align-items:center;gap:0.5rem;
+    margin:0 1.6rem 0 0;font-size:1rem;font-family:Georgia,serif
+  }
+  .signup label.radio input{margin:0}
+  .signup .note{
+    font-family:system-ui,-apple-system,sans-serif;font-size:0.82rem;
+    color:var(--ink-soft);line-height:1.5;max-width:34rem;margin:0 0 1.5rem
+  }
+  .signup .btn{font-family:system-ui,-apple-system,sans-serif}
+  @media(max-width:520px){ .signup{padding:1.5rem} }
+  .guarantee{border:1px solid var(--accent);padding:1.8rem;margin:2rem 0}
+  .guarantee h3{color:var(--accent);margin-bottom:0.6rem}
+  footer{background:var(--ink);color:var(--paper-alt);padding:3rem 0;font-size:0.85rem;font-family:system-ui,-apple-system,sans-serif}
   footer a{color:var(--paper-alt)}
-  @media(max-width:640px){ body{font-size:17px} }
+  @media(max-width:640px){ body{font-size:17px} section{padding:3.2rem 0} }
+  #cookiebar{
+    position:fixed;left:0;right:0;bottom:0;z-index:99;
+    background:var(--ink);color:var(--paper-alt);padding:1.1rem 1.6rem;
+    font-family:system-ui,-apple-system,sans-serif;font-size:0.85rem;line-height:1.5;
+    display:none;align-items:center;gap:1.2rem;flex-wrap:wrap;justify-content:center;
+  }
+  #cookiebar a{color:var(--paper-alt)}
+  #cookiebar button{
+    font-family:inherit;font-size:0.85rem;padding:0.55rem 1.2rem;cursor:pointer;
+    border:1px solid var(--paper-alt);background:none;color:var(--paper-alt);
+  }
+  #cookiebar button.yes{background:var(--paper-alt);color:var(--ink);border-color:var(--paper-alt)}
+  @media(max-width:520px){
+    #cookiebar{padding:1rem;font-size:0.8rem}
+    #cookiebar button{flex:1}
+    /* stack call-to-action buttons full width rather than letting them collide */
+    .btn{display:block;width:100%;text-align:center;margin:0 0 0.7rem !important}
+    /* padding inside padding eats the line length on a narrow screen */
+    .calc{padding:1.5rem}
+    .guarantee{padding:1.4rem}
+    .facts{gap:1.4rem 2rem}
+  }
 </style>
+<!-- ===================== GOOGLE ANALYTICS (GA4) =====================
+     Replace G-9HWKQJCLPP (twice) with your Measurement ID from
+     Google Analytics → Admin → Data streams → Web.
+     ================================================================= -->
+<script>
+  // GA4 is loaded only after the visitor accepts analytics cookies (see the
+  // banner script at the foot of this page). Nothing is set before that.
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  window.loadAnalytics = function(){
+    if (window.__gaLoaded) return; window.__gaLoaded = true;
+    var t = document.createElement('script');
+    t.async = true;
+    t.src = 'https://www.googletagmanager.com/gtag/js?id=G-9HWKQJCLPP';
+    document.head.appendChild(t);
+    gtag('js', new Date());
+    gtag('config', 'G-9HWKQJCLPP', { anonymize_ip: true });
+  };
+</script>
 </head>
 <body>
 
-<main>
+<!-- ============ HERO ============ -->
+<header class="hero">
   <div class="wrap">
-    <div class="kicker">Negotiate Like a Woman</div>
-    <h1>Lucy Watson</h1>
-    <p class="lede">Negotiation strategy for women — because the risks are different, so the
-      strategy has to be.</p>
-
-    <ul class="links">
-      <li><a href="/closing-the-gap/">
-        <span class="t">Closing The Gap</span>
-        <span class="d">A 12-month programme. Applications open.</span></a></li>
-      <li><a href="https://121.negotiationwhisperer.co">
-        <span class="t">1:1 negotiation support</span>
-        <span class="d">For a live, high-stakes conversation.</span></a></li>
-      <li><a href="https://lucywatsonwrites.substack.com">
-        <span class="t">The Negotiation Gap</span>
-        <span class="d">Writing on Substack.</span></a></li>
-      <li><a href="https://tally.so/r/lb4akk">
-        <span class="t">Events and the Supper Club</span>
-        <span class="d">Hear what's coming.</span></a></li>
-    </ul>
+    <div class="kicker">A 12-month programme by Negotiate Like a Woman</div>
+    <h1>Closing The Gap</h1>
+    <p class="sub">From undervalued and overlooked, to securing the reward, respect and
+      influence your work deserves.</p>
+    <p style="font-size:1.15rem;color:var(--accent);max-width:34rem;margin:-1.2rem 0 2rem">
+      The gap doesn't close by working harder. It closes by negotiating.</p>
+    <a class="btn" href="#apply">Apply for a place</a>
+    <a class="btn ghost" href="#brochure" style="margin-left:0.6rem">Download the brochure</a>
+    <div class="facts">
+      <div><span>Begins</span>16 October 2026</div>
+      <div><span>Places</span>Maximum 8</div>
+      <div><span>Format</span>Virtual, live</div>
+      <div><span>Entry</span>By application</div>
+    </div>
   </div>
-</main>
+</header>
+
+<!-- ============ WHAT IT IS ============ -->
+<section>
+  <div class="wrap narrow">
+    <div class="kicker">What it is</div>
+    <h2>Changing what happens in the conversations that shape your career.</h2>
+    <p>Pay, promotion, authority, opportunity — the negotiations that shape what
+      you're rewarded for, what you're trusted with and what happens next.</p>
+    <p>Most negotiation training ends the week you finish it, which is almost never the week
+      your negotiation happens.</p>
+    <p><strong>Two months of method. Ten months of doing it for real.</strong></p>
+    <p class="lede">Because leverage takes months to build, and the timing is something you can
+      influence but rarely control.</p>
+  </div>
+</section>
+
+<!-- ============ WHY DIFFERENT ============ -->
+<section>
+  <div class="wrap narrow">
+    <div class="kicker">Why this is different</div>
+    <h2>You're not bad at negotiation — you're playing a harder game.</h2>
+    <p>Research consistently finds it is riskier for women to act assertively in negotiation.
+      Behaviour that's perfectly acceptable coming from a man triggers backlash when it comes
+      from a woman.</p>
+    <p>Which means the hesitation you may have been treating as a personal weakness is closer
+      to an accurate reading of the room. Holding back is a rational response to a genuine
+      risk. It's simply a very expensive one — and it isn't the only response available.</p>
+    <p>Most negotiation training ignores this. It teaches the tactics without accounting for
+      the fact that the same behaviour can land differently coming from a woman.</p>
+    <p><strong>Negotiating like a woman doesn't mean negotiating softly.</strong> It means
+      seeing the game you're actually in — one where the rules aren't applied evenly — and
+      choosing your strategy with that in full view. Sometimes that means being direct,
+      anchoring hard, and letting a silence sit. Sometimes it means framing an ask so that
+      saying yes is easy for the person who has to defend it upstairs.</p>
+    <p>Often, there's far more you can unlock where you are. Sometimes, though, the honest
+      answer is that you've reached the ceiling of what your current environment will offer
+      you. Knowing which situation you're in changes the strategy.</p>
+  </div>
+</section>
+
+<!-- ============ CALCULATOR ============ -->
+<section>
+  <div class="wrap narrow">
+    <div class="kicker">The cost of being undervalued</div>
+    <h2>What could that gap add up to?</h2>
+    <p>Think of a negotiation earlier in your career — one where you might have secured more,
+      or didn't realise there was anything to secure. At the time, the difference probably
+      looked modest.</p>
+    <p>But a lower starting point can follow you. When later rises build on it, the gap
+      compounds.</p>
+
+    <div class="calc">
+      <div class="field">
+        <label for="gap">How much was the gap?</label>
+        <input id="gap" type="number" min="0" max="500000" step="500" value="5000"
+               inputmode="numeric" aria-describedby="calcnote">
+      </div>
+      <div class="field three">
+        <div>
+          <label for="yrs">Years ago</label>
+          <input id="yrs" type="number" min="0" max="40" step="1" value="10" inputmode="numeric">
+        </div>
+        <div>
+          <label for="age">Your age</label>
+          <input id="age" type="number" min="18" max="80" step="1" value="45" inputmode="numeric">
+        </div>
+        <div>
+          <label for="ret">Retiring at</label>
+          <input id="ret" type="number" min="40" max="85" step="1" value="68" inputmode="numeric">
+        </div>
+      </div>
+      <p class="hint" style="margin:-0.8rem 0 1.4rem">68 is the State Pension age currently
+        legislated for anyone born after April 1977. Change it if you plan to stop earlier.</p>
+
+      <div class="result" aria-live="polite">
+        <span class="big" id="out">—</span>
+        <p id="outline" style="margin:0 0 0.6rem">what that one conversation could cost you by
+          the time you retire</p>
+        <p id="outnow" style="margin:0 0 1rem;color:var(--accent)"></p>
+        <div class="muted" id="calcnote">
+          <p style="margin:0 0 0.5rem"><strong>All figures are in today's money.</strong>
+            Inflation has already been taken out, so these are pounds you can compare with your
+            salary now.</p>
+          <ul class="assump">
+            <li><strong>The shortfall is never corrected</strong> — no later rise makes up for it.</li>
+            <li><strong>The gap grows 1.5% a year above inflation</strong>, tracking senior pay
+              progression. So it widens in real terms as well as cash terms.</li>
+            <li><strong>The money would have earned 3% a year above inflation</strong> had you
+              received and invested it.</li>
+          </ul>
+          <p style="margin:0.5rem 0 0">Excludes tax, bonuses and pension contributions, all of
+            which would tend to make the real figure larger. Illustrative only, and not
+            financial advice.</p>
+        </div>
+      </div>
+    </div>
+
+    <p style="margin-top:2rem"><strong>And that's one conversation.</strong></p>
+    <p>Now think about a whole career — every review, offer, promotion and opportunity where the
+      outcome could have been different.</p>
+    <p>And that's only the money. Negotiating well can also change the authority you have, the
+      opportunities you're offered, the time you keep for yourself and the decisions you get to
+      influence. Those are harder to put a number on.</p>
+  </div>
+</section>
+
+<!-- ============ WHO IT'S FOR ============ -->
+<section>
+  <div class="wrap narrow">
+    <div class="kicker">Who it's for</div>
+    <h2>A small group, at a similar point.</h2>
+    <p>You've been doing work that's visibly above your grade, and it hasn't translated into
+      anything. You've been told "next year" more than once. You've watched someone less
+      capable be promoted, and been asked to be pleased about it.</p>
+    <p>You're respected. You're also underpaid, and everyone including you knows it. Or the
+      money is fine and what you actually want is more authority, autonomy or a role that
+      leaves room for a life outside work.</p>
+    <p>It's about the size of the gap between what you contribute and what comes back — and
+      whether you're ready to do something deliberate about it.</p>
+    <p><strong>It isn't for you</strong> if you'd rather watch than take part, if you want
+      someone to do it for you, or if you'd rather not look at your own part in it.</p>
+  </div>
+</section>
+
+<!-- ============ THE TWELVE MONTHS ============ -->
+<section>
+  <div class="wrap">
+    <div class="kicker">What the twelve months look like</div>
+    <h2 class="narrow">Two months of Foundations. Then ten months of doing it for real.</h2>
+    <p class="narrow">Eight weekly 90-minute sessions, October to December, built around the
+      CLOSE framework.</p>
+
+    <div class="cols" style="margin:2.6rem 0">
+      <div class="stage"><h3>C — Clarify</h3>
+        <p>What you want next, where the opportunity lies and what needs to change.</p></div>
+      <div class="stage"><h3>L — Leverage</h3>
+        <p>The value you create, how others perceive it and who advocates for you.</p></div>
+      <div class="stage"><h3>O — Options</h3>
+        <p>Parameters, fallbacks, anchors and widening what's on the table.</p></div>
+      <div class="stage"><h3>S — Steer</h3>
+        <p>How to lead the negotiation rather than be led by it.</p></div>
+      <div class="stage"><h3>E — Embody</h3>
+        <p>The mindset and self-regulation to make the ask.</p></div>
+      <div class="stage"><h3>Review &amp; Reflect</h3>
+        <p>Learn from every negotiation and carry it into the next.</p></div>
+    </div>
+
+    <div class="narrow">
+      <p>Two live practice sessions in pairs, followed by group review.</p>
+      <p><strong>Then ten months of applying it.</strong> Monthly group surgeries where you
+        bring what's live. Three guest experts through the year, including Emilie Cousteau on
+        executive presence. A private WhatsApp group for what can't wait. Three cohort dinners
+        in London, included and entirely optional. And 1:1 time with me whenever something significant is
+        in play.</p>
+      <p><a class="btn" href="#apply">Apply for a place</a>
+        <a class="btn ghost" href="#brochure" style="margin-left:0.6rem">Full detail is in the
+        brochure</a></p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TESTIMONIALS ============ -->
+<section id="testimonials">
+  <div class="wrap">
+    <div class="kicker">Cohort 1</div>
+    <h2 class="narrow">In their own words.</h2>
+    <p class="narrow">These women completed an earlier, shorter version of the programme. The
+      material they describe forms the core of Foundations.</p>
+    <div class="vids">
+      <div class="vid"><iframe src="https://www.youtube-nocookie.com/embed/QdLe7TgOCts?rel=0" title="Cohort 1 testimonial" allowfullscreen loading="lazy"></iframe></div>
+      <div class="vid"><iframe src="https://www.youtube-nocookie.com/embed/iG0jN3Sg7hA?rel=0" title="Cohort 1 testimonial" allowfullscreen loading="lazy"></iframe></div>
+      <div class="vid"><iframe src="https://www.youtube-nocookie.com/embed/_BKL77A2gec?rel=0" title="Cohort 1 testimonial" allowfullscreen loading="lazy"></iframe></div>
+      <div class="vid"><iframe src="https://www.youtube-nocookie.com/embed/rWeK5VnZHqM?rel=0" title="Cohort 1 testimonial" allowfullscreen loading="lazy"></iframe></div>
+    </div>
+    <div class="cols">
+      <blockquote>Before, it was absolute one hundred per cent dread — even to the point of
+        thinking I'd rather not do it at all. It hasn't flipped a switch, because I'm still the
+        way I am. But it's given me the confidence not to dread it in that same
+        way.<cite>Helen, VP Marketing</cite></blockquote>
+      <blockquote>I've done negotiation programmes before, as part of wider leadership
+        training. But it never came at it from that angle of — this is why you might be
+        experiencing things differently as a woman negotiating.<cite>Maddy, CEO
+        (InsurTech)</cite></blockquote>
+      <blockquote>I'm much more strategic about the stakeholders I need to engage with. Before,
+        I was just trying the straight approach — I need this. Now there's a deeper thought
+        process about the people around me.<cite>Rashmi, Strategic
+        Transformation</cite></blockquote>
+    </div>
+  </div>
+</section>
+
+<!-- ============ WHO YOU'LL WORK WITH ============ -->
+<section>
+  <div class="wrap narrow">
+    <div class="kicker">Who you'll work with</div>
+    <img class="portrait" src="/assets/lucy-corporate.jpg" alt="Lucy Watson">
+    <p>I'm Lucy Watson, founder of Negotiate Like a Woman. I've spent 25+ years negotiating in
+      financial services and technology — including at Barclays, Oliver Wyman and as co-founder
+      and Commercial COO of an enterprise technology company.</p>
+    <p>Closing The Gap grew out of my own experience of discovering that knowing how to
+      negotiate wasn't enough — and digging into the research to understand why.</p>
+    <p style="clear:both">My full story is in <a href="#brochure">the brochure</a>.</p>
+  </div>
+</section>
+
+<!-- ============ INVESTMENT ============ -->
+<section id="apply">
+  <div class="wrap narrow">
+    <div class="kicker">Investment</div>
+    <span class="price">£3,500</span>
+    <p>Or ten monthly payments of £375.</p>
+    <p>Twelve months. No more than eight women. One significant negotiation, handled better,
+      can repay the investment on its own.</p>
+
+    <h3 style="margin-top:2.5rem">How to apply</h3>
+    <ol class="steps">
+      <li><strong>Apply.</strong> About five minutes.</li>
+      <li><strong>We talk.</strong> A short conversation to work out whether this is genuinely
+        right for you, and for you to ask whatever you'd like to ask. If it isn't right, I'll
+        say so.</li>
+      <li><strong>Join.</strong> Choose how you'd like to pay, and you're in.</li>
+    </ol>
+
+    <div class="guarantee" style="border-color:var(--rule)">
+      <h3 style="color:var(--ink)">Could your employer fund this?</h3>
+      <p>You may already have a professional development budget you can use. Negotiation isn't
+        only about securing pay rises — better negotiators create value for their employers
+        too.</p>
+      <p style="margin:0">Ask me for the Employer Negotiation Brief — a one-page business case
+        written in language that works for them.</p>
+    </div>
+
+    <div class="guarantee" style="border-color:var(--rule)">
+      <h3 style="color:var(--ink)">One funded place per cohort</h3>
+      <p>On each cohort, I set aside at least one funded place, for a woman who is right for
+        this but for whom the investment isn't possible at the moment.</p>
+      <p>If that might be you, say so when you apply. It won't count against you.</p>
+      <p style="margin:0">And if you know someone who should have it — a woman between roles,
+        or rebuilding, or simply at a point where £3,500 isn't available to her — nominate
+        her.</p>
+    </div>
+    <p>Applications reviewed as they arrive. Applications close 9 October.</p>
+    <p><a class="btn" href="https://tally.so/r/zx5ovg">Apply for a place</a></p>
+  </div>
+</section>
+
+<!-- ============ BROCHURE DOWNLOAD ============ -->
+<section id="brochure">
+  <div class="wrap narrow">
+    <div class="kicker">The full picture</div>
+    <h2>Download the brochure</h2>
+    <p>Everything above, in detail — the full programme structure, the session plan, what's
+      included, and how the year runs.</p>
+
+    <!-- ===================== BREVO SIGNUP FORM =====================
+         Posts to Brevo's "Closing The Gap - brochure download" form.
+         Adds the contact to Main list (#9) and Closing The Gap (#10),
+         and Brevo sends the brochure email automatically.
+         Submitting targets a hidden iframe so the visitor stays here.
+         ============================================================== -->
+    <div class="signup" id="signupbox">
+      <form id="brochureform" method="POST" target="brevo_sink"
+        action="https://fc846cc2.sibforms.com/serve/MUIFABK3RyhY8BqMHh_ZdNcm192_zUAGM73oyyPVdve5nswdGUrzs8N1WGB8FQIFfEnutlbneNcdlZeS2vsiYsxqqNjPfvZBOyRJ2Uotb_efN5zIozFuVv1ixwCTaM1Vuy_khYPF8SxsUrAgBXL18RwtavH7XXYEe9IMQJJ7h9PJytRv5rmYApD9hi2rw_S1WzRlqX8UAkbPt7ZPbQ==">
+
+        <label for="FIRSTNAME">First name</label>
+        <input id="FIRSTNAME" name="FIRSTNAME" type="text" maxlength="200" autocomplete="given-name" required>
+
+        <label for="EMAIL">Email</label>
+        <input id="EMAIL" name="EMAIL" type="email" autocomplete="email" required>
+
+        <fieldset>
+          <legend>Do you want to hear about in-person events in London, including the
+            Negotiation Supper Club?</legend>
+          <label class="radio"><input type="radio" name="LONDON_EVENTS" value="1" required> Yes</label>
+          <label class="radio"><input type="radio" name="LONDON_EVENTS" value="2" required> No</label>
+        </fieldset>
+
+        <p class="note">I'll email you the brochure, and occasional updates about Closing The Gap
+          and my events. Unsubscribe any time.</p>
+
+        <!-- honeypot: real people never fill this in -->
+        <input type="text" name="email_address_check" value="" tabindex="-1"
+               autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px">
+        <input type="hidden" name="locale" value="en">
+        <input type="hidden" name="html_type" value="simple">
+
+        <button class="btn" type="submit">Send me the brochure</button>
+      </form>
+
+      <div id="signupdone" style="display:none">
+        <p style="margin:0 0 1.4rem;font-size:1.15rem">Here it is.</p>
+        <a class="btn" href="/assets/closing-the-gap-brochure.pdf" target="_blank" rel="noopener"
+           onclick="if(typeof gtag==='function')gtag('event','brochure_open',{method:'inline'})">View the brochure</a>
+        <p class="note" style="margin:1.4rem 0 0">I've emailed you a copy as well, so you have it
+          later. If it's not in your inbox, check your Promotions tab.</p>
+      </div>
+    </div>
+    <iframe name="brevo_sink" style="display:none" title="form target"></iframe>
+  </div>
+</section>
 
 <footer>
   <div class="wrap">
+    <p style="margin-bottom:0.4rem"><strong>Closing The Gap</strong> — a 12-month programme by
+      Negotiate Like a Woman</p>
+    <p style="margin:0 0 0.9rem">negotiatelikeawoman.co &nbsp;·&nbsp;
+      <a href="mailto:support@negotiationwhisperer.co">support@negotiationwhisperer.co</a>
+      &nbsp;·&nbsp;
+      <a href="https://wa.me/message/WIDHW2ET3D56J1">WhatsApp</a></p>
     <p style="margin:0 0 0.6rem">Negotiate Like a Woman is a trading name of Negotiation Whisperer Ltd, registered in England and Wales, company no. 16808191.</p>
-    <p style="margin:0;opacity:0.75">© 2026 Lucy Watson &nbsp;·&nbsp;
-    <a href="https://www.negotiationwhisperer.co/privacy_policy">Privacy</a> &nbsp;·&nbsp;
-    <a href="mailto:support@negotiationwhisperer.co">support@negotiationwhisperer.co</a></p>
+    <p style="margin:0;opacity:0.75">
+      © 2026 Lucy Watson &nbsp;·&nbsp;
+      <a href="https://www.negotiationwhisperer.co/privacy_policy">Privacy</a> &nbsp;·&nbsp;
+      <a href="[TERMS URL]">Terms</a> &nbsp;·&nbsp;
+      <a href="#" onclick="cookiePrefs();return false">Cookie settings</a></p>
   </div>
 </footer>
 
+<script>
+(function(){
+  var gap = document.getElementById('gap');
+  var yrs = document.getElementById('yrs');
+  var age = document.getElementById('age');
+  var ret = document.getElementById('ret');
+  var out = document.getElementById('out');
+  var outnow = document.getElementById('outnow');
+
+  var PAY = 0.015;   // gap grows this much above inflation
+  var RET = 0.03;    // investment return above inflation
+  // everything below is therefore in today's money
+
+  function round(n){
+    if (n >= 1000000) return '\u00a3' + (Math.round(n/100000)/10) + 'm';
+    var step = n >= 100000 ? 10000 : (n >= 20000 ? 5000 : 1000);
+    return '\u00a3' + (Math.round(n/step)*step).toLocaleString('en-GB');
+  }
+
+  function update(){
+    var a  = Math.min(Math.max(parseFloat(gap.value) || 0, 0), 500000);
+    var ya = Math.min(Math.max(parseInt(yrs.value, 10) || 0, 0), 40);
+    var ag = parseInt(age.value, 10);
+    var rt = parseInt(ret.value, 10);
+
+    if (a <= 0 || !ag || !rt){ out.textContent = '\u2014'; outnow.textContent = ''; return; }
+
+    var ahead = Math.min(Math.max(rt - ag, 0), 50);
+    var total = ya + ahead;
+    if (total < 1){ out.textContent = '\u2014'; outnow.textContent = ''; return; }
+
+    // value at retirement of every year's shortfall, invested, in today's money
+    var atRetirement = 0;
+    for (var t = 0; t < total; t++){
+      atRetirement += a * Math.pow(1 + PAY, t) * Math.pow(1 + RET, total - t);
+    }
+
+    // shortfall actually incurred so far, in today's money
+    var soFar = 0;
+    for (var u = 0; u < ya; u++){ soFar += a * Math.pow(1 + PAY, u); }
+
+    var gapNow = a * Math.pow(1 + PAY, ya);
+
+    out.textContent = round(atRetirement);
+
+    if (ya >= 1){
+      outnow.textContent = 'You have already missed ' + round(soFar)
+        + ' of income, and that ' + round(a) + ' is now a gap of about '
+        + round(gapNow) + ' a year.';
+    } else {
+      outnow.textContent = 'It starts at ' + round(a) + ' a year, and widens from there.';
+    }
+  }
+
+  [gap, yrs, age, ret].forEach(function(el){ el.addEventListener('input', update); });
+  update();
+})();
+</script>
+
+
+<!-- ===================== SIGNUP FORM =====================
+     The form posts into a hidden iframe, so the visitor stays on the page.
+     We swap the form for the confirmation line rather than navigating away.
+     ======================================================================= -->
+<script>
+(function(){
+  var f = document.getElementById('brochureform');
+  if (!f) return;
+  f.addEventListener('submit', function(){
+    // let the real POST proceed into the hidden iframe, then swap the UI
+    setTimeout(function(){
+      f.style.display = 'none';
+      document.getElementById('signupdone').style.display = 'block';
+      if (typeof gtag === 'function') gtag('event', 'brochure_request', {
+        source: (window.__attrib && window.__attrib.utm_source) || 'direct'
+      });
+    }, 300);
+  });
+})();
+</script>
+
+<!-- ===================== ATTRIBUTION (UTM FORWARDING) =====================
+     Captures campaign parameters on arrival, remembers them for 30 days,
+     and appends them to the application form and any Brevo form links so
+     attribution survives the hop off this page.
+
+     For this to reach Tally, create hidden fields in the Tally form named
+     exactly: utm_source, utm_medium, utm_campaign, utm_content, utm_term.
+     Tally populates hidden fields from matching URL parameters.
+     ======================================================================= -->
+<script>
+(function(){
+  var KEYS = ['utm_source','utm_medium','utm_campaign','utm_content','utm_term','ref'];
+  var STORE = 'ctg-attrib';
+  var MAXAGE = 30 * 24 * 60 * 60 * 1000;   // 30 days
+
+  var qs = new URLSearchParams(location.search);
+  var fresh = {};
+  KEYS.forEach(function(k){ var v = qs.get(k); if (v) fresh[k] = v; });
+
+  var saved = {};
+  try {
+    var raw = JSON.parse(localStorage.getItem(STORE) || 'null');
+    if (raw && (Date.now() - raw.ts) < MAXAGE) saved = raw.data || {};
+  } catch(e){}
+
+  if (Object.keys(fresh).length) {
+    // A tagged link always wins — last non-direct click.
+    saved = fresh;
+    try { localStorage.setItem(STORE, JSON.stringify({ ts: Date.now(), data: saved })); } catch(e){}
+  } else if (!Object.keys(saved).length && document.referrer &&
+             document.referrer.indexOf(location.hostname) === -1) {
+    // Untagged inbound link — keep the referring host so it isn't lost as "direct".
+    try {
+      saved = { utm_source: new URL(document.referrer).hostname, utm_medium: 'referral' };
+      localStorage.setItem(STORE, JSON.stringify({ ts: Date.now(), data: saved }));
+    } catch(e){}
+  }
+
+  window.__attrib = saved;
+
+  // Append to any link or embed that leaves this page for a form.
+  var FORMS = /tally\.so|typeform|systeme\.io|sibforms|brevo|calendar\.app\.google/i;
+  function decorate(root){
+    (root || document).querySelectorAll('a[href], iframe[src]').forEach(function(el){
+      var attr = el.tagName === 'IFRAME' ? 'src' : 'href';
+      var h = el.getAttribute(attr);
+      if (!h || !/^https?:/i.test(h) || !FORMS.test(h)) return;
+      try {
+        var u = new URL(h);
+        Object.keys(saved).forEach(function(k){
+          if (saved[k] && !u.searchParams.get(k)) u.searchParams.set(k, saved[k]);
+        });
+        el.setAttribute(attr, u.toString());
+      } catch(e){}
+    });
+  }
+  decorate();
+  // The Brevo embed is pasted in later and may render after this runs.
+  if (window.MutationObserver) {
+    new MutationObserver(function(m){ decorate(); })
+      .observe(document.body, { childList: true, subtree: true });
+  }
+})();
+</script>
+
+<!-- ===================== COOKIE CONSENT =====================
+     Analytics cookies do not load until the visitor accepts.
+     Choice is remembered in localStorage; "Cookie settings" in the
+     footer reopens the banner.
+     ========================================================== -->
+<div id="cookiebar" role="region" aria-label="Cookie choices">
+  <span>We'd like to use analytics cookies to understand how this page is used. Nothing is set
+    unless you agree. <a href="https://www.negotiationwhisperer.co/privacy_policy">Privacy notice</a>.</span>
+  <span style="display:flex;gap:0.6rem">
+    <button class="yes" onclick="cookieChoice('yes')">Accept</button>
+    <button onclick="cookieChoice('no')">Decline</button>
+  </span>
+</div>
+<script>
+  var KEY = 'ctg-analytics-consent';
+  function cookieBar(show){ document.getElementById('cookiebar').style.display = show ? 'flex' : 'none'; }
+  function cookieChoice(v){
+    try { localStorage.setItem(KEY, v); } catch(e){}
+    cookieBar(false);
+    if (v === 'yes') window.loadAnalytics();
+  }
+  function cookiePrefs(){ cookieBar(true); }
+  (function(){
+    var v = null;
+    try { v = localStorage.getItem(KEY); } catch(e){}
+    if (v === 'yes') window.loadAnalytics();
+    else if (v !== 'no') cookieBar(true);
+  })();
+</script>
+
+<!-- ===================== EVENT TRACKING =====================
+     Fires GA4 events for button clicks and calculator use.
+     Safe if GA is absent — every call is guarded.
+     ========================================================== -->
+<script>
+(function(){
+  function ev(name, params){
+    if (typeof gtag === 'function') gtag('event', name, params || {});
+  }
+  function where(el){
+    var sec = el.closest('section, header');
+    if (!sec) return 'unknown';
+    var k = sec.querySelector('.kicker');
+    var label = k ? k.textContent : (sec.id || 'section');
+    return label.trim().toLowerCase().replace(/[^a-z0-9]+/g, '_').replace(/^_|_$/g, '').slice(0, 40);
+  }
+
+  document.addEventListener('click', function(e){
+    var a = e.target.closest('a');
+    if (!a) return;
+    var href = a.getAttribute('href') || '';
+    var loc  = where(a);
+
+    var src = (window.__attrib && window.__attrib.utm_source) || 'direct';
+    if (href === '#apply')            ev('click_apply',     { location: loc, source: src });
+    else if (href === '#brochure')    ev('click_brochure',  { location: loc });
+    else if (/wa\.me|whatsapp/i.test(href)) ev('click_whatsapp', { location: loc });
+    else if (/^mailto:/i.test(href))  ev('click_email',     { location: loc });
+    else if (/^https?:/i.test(href) && href.indexOf(location.hostname) === -1)
+      ev('click_outbound', { location: loc, link_url: href });
+    // the real application link — update the test if the form lives elsewhere
+    if (/tally\.so|typeform|systeme\.io|APPLICATION FORM URL/i.test(href))
+      ev('begin_application', { location: loc });
+  }, true);
+
+  // Calculator: one event the first time someone changes an input,
+  // plus the values they settled on (debounced).
+  var started = false, t;
+  ['gap','yrs','age','ret'].forEach(function(id){
+    var el = document.getElementById(id);
+    if (!el) return;
+    el.addEventListener('input', function(){
+      if (!started) { started = true; ev('calculator_start'); }
+      clearTimeout(t);
+      t = setTimeout(function(){
+        ev('calculator_used', {
+          gap_amount: Number((document.getElementById('gap')||{}).value || 0),
+          years_ago:  Number((document.getElementById('yrs')||{}).value || 0),
+          age:        Number((document.getElementById('age')||{}).value || 0)
+        });
+      }, 1500);
+    });
+  });
+
+  // Scroll depth — tells you where people stop reading.
+  var hit = {};
+  window.addEventListener('scroll', function(){
+    var d = document.documentElement;
+    var pct = (d.scrollTop + window.innerHeight) / d.scrollHeight * 100;
+    [25,50,75,90].forEach(function(m){
+      if (pct >= m && !hit[m]) { hit[m] = 1; ev('scroll_depth', { percent: m }); }
+    });
+  }, { passive: true });
+})();
+</script>
 </body>
 </html>
