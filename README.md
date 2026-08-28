@@ -114,8 +114,8 @@ four files.
 
 ## Still to do
 
-- [ ] Brevo embed for the brochure download
-- [ ] Terms page — the footer links to `[TERMS URL]`
+- [ ] Terms page — write it, then put the link back in the footer of
+      `closing-the-gap/index.html` (removed 28 Aug because it pointed at a placeholder)
 - [ ] Enrolment agreement (not a web page — signed at joining)
 - [ ] Update the privacy notice — cookies/analytics, and add Brevo, Tally and
       Cloudflare to the processors and transfers table
