@@ -10,6 +10,10 @@
      og:url and og:image must be absolute URLs or LinkedIn renders
      nothing. Update these if the address ever changes.
      ========================================================== -->
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<meta name="theme-color" content="#7d2b3f">
 <link rel="canonical" href="https://negotiatelikeawoman.co/closing-the-gap/">
 <meta property="og:site_name" content="Negotiate Like a Woman">
 <meta property="og:locale" content="en_GB">
@@ -55,10 +59,21 @@
   h2{font-size:clamp(1.7rem,3.4vw,2.4rem)}
   h3{font-size:1.2rem;font-weight:normal;letter-spacing:0.01em}
   .bridge{
-    font-size:1.4rem;line-height:1.45;color:var(--ink);
-    margin:0 0 0.9rem;max-width:32rem
+    font-size:1.25rem;line-height:1.45;color:var(--ink);
+    border-top:2px solid var(--accent);padding-top:1rem;margin:0
   }
-  .bridge:last-child{margin-bottom:0}
+  ul.plain{list-style:none;padding:0;margin:0 0 1.6rem}
+  ul.plain li{margin-bottom:1.1rem}
+  ul.plain li:last-child{margin-bottom:0}
+  .summary{
+    margin-top:1.8rem;padding-top:1.6rem;border-top:1px solid var(--rule);
+    font-size:1.2rem;color:var(--ink-soft)
+  }
+  .close-letters{
+    font-family:system-ui,-apple-system,sans-serif;
+    font-size:1.05rem;letter-spacing:0.42em;color:var(--accent);
+    margin:0 0 2rem
+  }
   ul.components{list-style:none;padding:0;margin:0 0 1.8rem;border-top:1px solid var(--rule)}
   ul.components li{padding:0.85rem 0;border-bottom:1px solid var(--rule)}
   .vid.facade{
@@ -232,13 +247,15 @@
 </header>
 
 <!-- ============ WHAT CHANGES ============ -->
-<section style="padding-bottom:0">
-  <div class="wrap narrow">
+<section>
+  <div class="wrap">
     <div class="kicker">Imagine</div>
-    <p class="bridge">Your pay starts to reflect the job you're actually doing.</p>
-    <p class="bridge">Your name comes up in rooms you're not in.</p>
-    <p class="bridge">You stop being the safe pair of hands who gets more work — and start
-      being considered for what comes next.</p>
+    <div class="cols">
+      <p class="bridge">Your pay starts to reflect the job you're actually doing.</p>
+      <p class="bridge">Your name comes up in rooms you're not in.</p>
+      <p class="bridge">You're considered for what comes next, rather than handed more of
+        what you're already carrying.</p>
+    </div>
   </div>
 </section>
 
@@ -246,7 +263,7 @@
 <section>
   <div class="wrap narrow">
     <div class="kicker">What it is</div>
-    <h2>Changing what happens in the conversations that shape your career.</h2>
+    <h2>Changing the conversations that shape your career.</h2>
     <p>Pay, promotion, authority, opportunity — the negotiations that shape what
       you're rewarded for, what you're trusted with and what happens next.</p>
     <p>Most negotiation training ends the week you finish it, which is almost never the week
@@ -269,7 +286,7 @@
       to an accurate reading of the room. Holding back is a rational response to a genuine
       risk. It's simply a very expensive one — and it isn't the only response available.</p>
     <p>Most negotiation training ignores this. It teaches the tactics without accounting for
-      the fact that the same behaviour can land differently coming from a woman.</p>
+      who is using them.</p>
     <p><strong>Negotiating like a woman doesn't mean negotiating softly.</strong> It means
       seeing the game you're actually in — one where the rules aren't applied evenly — and
       choosing your strategy with that in full view. Sometimes that means being direct,
@@ -294,9 +311,11 @@
 
     <div class="calc">
       <div class="field">
-        <label for="gap">How much might the gap have been?</label>
+        <label for="gap">How much might the gap have been, at the time?</label>
         <input id="gap" type="number" min="0" max="500000" step="500" value="5000"
                inputmode="numeric" aria-describedby="calcnote">
+        <p class="hint">In the money of the day — the number you'd have seen on the offer.
+          I'll adjust for inflation.</p>
       </div>
       <div class="field three">
         <div>
@@ -321,19 +340,18 @@
           the time you retire</p>
         <p id="outnow" style="margin:0 0 1rem;color:var(--accent)"></p>
         <div class="muted" id="calcnote">
-          <p style="margin:0 0 0.5rem"><strong>All figures are in today's money.</strong>
-            Inflation has already been taken out, so these are pounds you can compare with your
-            salary now.</p>
+          <p style="margin:0 0 0.5rem"><strong>All results are in today's money</strong>, so you
+            can compare them with your salary now.</p>
           <ul class="assump">
+            <li><strong>Your figure is converted to today's money</strong> using the ONS
+              Consumer Prices Index.</li>
             <li><strong>The shortfall is never corrected</strong> — no later rise makes up for it.</li>
             <li><strong>The gap grows 1.5% a year above inflation</strong>, tracking senior pay
               progression. So it widens in real terms as well as cash terms.</li>
-            <li><strong>The money would have earned 3% a year above inflation</strong> had you
-              received and invested it.</li>
+            <li><strong>The total assumes the missing income is invested</strong>, earning 3% a
+              year above inflation.</li>
           </ul>
-          <p style="margin:0.5rem 0 0">Excludes tax, bonuses and pension contributions, all of
-            which would tend to make the real figure larger. Illustrative only, and not
-            financial advice.</p>
+          <p style="margin:0.5rem 0 0">Illustrative only, and not financial advice.</p>
         </div>
       </div>
     </div>
@@ -343,7 +361,7 @@
       outcome could have been different.</p>
     <p>And that's only the money. Negotiating well can also change the authority you have, the
       opportunities you're offered, the time you keep for yourself and the decisions you get to
-      influence. Those are harder to put a number on.</p>
+      influence.</p>
   </div>
 </section>
 
@@ -351,15 +369,19 @@
 <section>
   <div class="wrap narrow">
     <div class="kicker">Who it's for</div>
-    <h2>Women at a similar point.</h2>
-    <p>You've been doing work that's visibly above your grade, and it hasn't translated into
-      anything. You've been told "next year" more than once. You've watched someone less
-      capable be promoted, and been asked to be pleased about it.</p>
-    <p>You're respected. You're also underpaid, and everyone including you knows it. Or the
-      money is fine and what you actually want is more authority, autonomy or a role that
-      leaves room for a life outside work.</p>
-    <p>It's about the size of the gap between what you contribute and what comes back — and
-      whether you're ready to do something deliberate about it.</p>
+    <h2>Women whose contribution isn't coming back to them.</h2>
+    <ul class="plain">
+      <li>You've been doing work that's visibly above your grade, and it hasn't translated into
+        anything.</li>
+      <li>You've been told "next year" more than once.</li>
+      <li>You've watched someone less capable be promoted, and been asked to be pleased about
+        it.</li>
+      <li>You're respected. You're also underpaid, and everyone including you knows it.</li>
+      <li>Or the money is fine, and what you actually want is more authority, autonomy or a
+        role that leaves room for a life outside work.</li>
+    </ul>
+    <p class="summary">It's about the size of the gap between what you contribute and what comes
+      back — and whether you're ready to do something deliberate about it.</p>
     <p><strong>It isn't for you</strong> if you'd rather watch than take part, if you want
       someone to do it for you, or if you'd rather not look at your own part in it.</p>
   </div>
@@ -372,6 +394,7 @@
     <h2 class="narrow">Two months of Foundations. Then ten months of doing it for real.</h2>
     <p class="narrow">Eight weekly 90-minute sessions, October to December, built around the
       CLOSE framework.</p>
+    <p class="close-letters">C · L · O · S · E</p>
 
     <div class="cols" style="margin:2.6rem 0">
       <div class="stage"><h3>C — Clarify</h3>
@@ -386,14 +409,15 @@
         <p>The mindset and self-regulation to make the ask.</p></div>
     </div>
 
-    <div class="narrow" style="margin-bottom:2.6rem">
-      <p style="margin-bottom:0.4rem"><strong>Plus — Review &amp; Reflect.</strong>
-        Learn from every negotiation and carry it into the next.</p>
+    <div class="narrow" style="margin-bottom:3.2rem">
+      <p style="margin-bottom:0.4rem"><strong>And finally — Review &amp; Reflect:</strong>
+        a structured approach to learning from every negotiation.</p>
       <p>Two live practice sessions in pairs, followed by group review.</p>
     </div>
 
     <div class="narrow">
-      <h3 style="margin-bottom:1.2rem">Then ten months of applying it.</h3>
+      <div class="kicker">Then ten months of applying it</div>
+      <h3 style="margin-bottom:1.2rem">What else is included</h3>
       <ul class="components">
         <li><strong>Monthly surgeries</strong> — bring whatever is live.</li>
         <li><strong>Three guest experts</strong> through the year, including Emilie Cousteau
@@ -606,7 +630,27 @@
 
   var PAY = 0.015;   // gap grows this much above inflation
   var RET = 0.03;    // investment return above inflation
-  // everything below is therefore in today's money
+
+  /* People remember what they were paid in the money of the day, so the figure
+     typed in is treated as nominal and uprated to today using the ONS CPI index
+     (series D7BT, annual averages). Everything after that is in today's money. */
+  var CPI = {
+    1988:49.6, 1989:52.2, 1990:55.9, 1991:60.1, 1992:62.6, 1993:64.2, 1994:65.5,
+    1995:67.2, 1996:68.8, 1997:70.1, 1998:71.2, 1999:72.1, 2000:72.7, 2001:73.6,
+    2002:74.5, 2003:75.5, 2004:76.5, 2005:78.1, 2006:79.9, 2007:81.8, 2008:84.7,
+    2009:86.6, 2010:89.4, 2011:93.4, 2012:96.1, 2013:98.5, 2014:100.0, 2015:100.0,
+    2016:100.7, 2017:103.4, 2018:105.9, 2019:107.8, 2020:108.7, 2021:111.6,
+    2022:121.7, 2023:130.5, 2024:133.9, 2025:138.4
+  };
+  var CPI_NOW = 142.9;     // July 2026, the latest published index
+  var THIS_YEAR = 2026;
+
+  function inTodaysMoney(nominal, yearsAgo){
+    var y = THIS_YEAR - yearsAgo;
+    if (y >= THIS_YEAR) return nominal;
+    if (y < 1988) y = 1988;
+    return nominal * CPI_NOW / CPI[y];
+  }
 
   function round(n){
     if (n >= 1000000) return '\u00a3' + (Math.round(n/100000)/10) + 'm';
@@ -626,24 +670,28 @@
     var total = ya + ahead;
     if (total < 1){ out.textContent = '\u2014'; outnow.textContent = ''; return; }
 
-    // value at retirement of every year's shortfall, invested, in today's money
+    // the gap, restated in today's money before anything else happens to it
+    var ar = inTodaysMoney(a, ya);
+
+    /* Value at retirement of every year's shortfall, invested, in today's money.
+       Each year's money is treated as arriving at the END of that year, so the
+       final year earns nothing. The conservative of the two conventions. */
     var atRetirement = 0;
     for (var t = 0; t < total; t++){
-      atRetirement += a * Math.pow(1 + PAY, t) * Math.pow(1 + RET, total - t);
+      atRetirement += ar * Math.pow(1 + PAY, t) * Math.pow(1 + RET, total - 1 - t);
     }
 
     // shortfall actually incurred so far, in today's money
     var soFar = 0;
-    for (var u = 0; u < ya; u++){ soFar += a * Math.pow(1 + PAY, u); }
+    for (var u = 0; u < ya; u++){ soFar += ar * Math.pow(1 + PAY, u); }
 
-    var gapNow = a * Math.pow(1 + PAY, ya);
+    var gapNow = ar * Math.pow(1 + PAY, ya);
 
     out.textContent = round(atRetirement);
 
     if (ya >= 1){
-      outnow.textContent = 'You have already missed ' + round(soFar)
-        + ' of income, and that ' + round(a) + ' is now a gap of about '
-        + round(gapNow) + ' a year.';
+      outnow.textContent = 'That ' + round(a) + ' gap would be about ' + round(gapNow)
+        + ' a year today. You’ve already missed around ' + round(soFar) + ' of income.';
     } else {
       outnow.textContent = 'It starts at ' + round(a) + ' a year, and widens from there.';
     }
