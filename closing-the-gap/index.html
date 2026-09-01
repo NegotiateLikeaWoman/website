@@ -53,7 +53,26 @@
   h1,h2,h3{line-height:1.2;font-weight:normal;margin:0 0 1.2rem}
   h1{font-size:clamp(2.4rem,6vw,4rem);letter-spacing:-0.015em}
   h2{font-size:clamp(1.7rem,3.4vw,2.4rem)}
-  h3{font-size:1.15rem;font-family:system-ui,-apple-system,sans-serif;letter-spacing:0.02em}
+  h3{font-size:1.2rem;font-weight:normal;letter-spacing:0.01em}
+  .bridge{
+    font-size:1.4rem;line-height:1.45;color:var(--ink);
+    margin:0 0 0.9rem;max-width:32rem
+  }
+  .bridge:last-child{margin-bottom:0}
+  ul.components{list-style:none;padding:0;margin:0 0 1.8rem;border-top:1px solid var(--rule)}
+  ul.components li{padding:0.85rem 0;border-bottom:1px solid var(--rule)}
+  .vid.facade{
+    position:relative;cursor:pointer;background:#000 center/cover no-repeat;
+  }
+  .vid.facade::after{
+    content:"";position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+    width:64px;height:64px;border-radius:50%;
+    background:rgba(26,31,43,0.72) no-repeat center;
+    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='22' height='24' viewBox='0 0 22 24'><path d='M0 0l22 12L0 24z' fill='white'/></svg>");
+    transition:background-color 0.15s
+  }
+  .vid.facade:hover::after,.vid.facade:focus::after{background-color:var(--accent)}
+  .vid.facade:focus{outline:2px solid var(--accent);outline-offset:3px}
   p{margin:0 0 1.2rem}
   .lede{font-size:1.2rem;color:var(--ink-soft)}
   .kicker{
@@ -206,11 +225,22 @@
     <div class="facts">
       <div><span>Begins</span>16 October 2026</div>
       <div><span>Places</span>Maximum 8</div>
-      <div><span>Format</span>Virtual, live</div>
+      <div><span>Format</span>Live, virtual</div>
       <div><span>Entry</span>By application</div>
     </div>
   </div>
 </header>
+
+<!-- ============ WHAT CHANGES ============ -->
+<section style="padding-bottom:0">
+  <div class="wrap narrow">
+    <div class="kicker">Imagine</div>
+    <p class="bridge">Your pay starts to reflect the job you're actually doing.</p>
+    <p class="bridge">Your name comes up in rooms you're not in.</p>
+    <p class="bridge">You stop being the safe pair of hands who gets more work — and start
+      being considered for what comes next.</p>
+  </div>
+</section>
 
 <!-- ============ WHAT IT IS ============ -->
 <section>
@@ -264,7 +294,7 @@
 
     <div class="calc">
       <div class="field">
-        <label for="gap">How much was the gap?</label>
+        <label for="gap">How much might the gap have been?</label>
         <input id="gap" type="number" min="0" max="500000" step="500" value="5000"
                inputmode="numeric" aria-describedby="calcnote">
       </div>
@@ -321,7 +351,7 @@
 <section>
   <div class="wrap narrow">
     <div class="kicker">Who it's for</div>
-    <h2>A small group, at a similar point.</h2>
+    <h2>Women at a similar point.</h2>
     <p>You've been doing work that's visibly above your grade, and it hasn't translated into
       anything. You've been told "next year" more than once. You've watched someone less
       capable be promoted, and been asked to be pleased about it.</p>
@@ -354,21 +384,45 @@
         <p>How to lead the negotiation rather than be led by it.</p></div>
       <div class="stage"><h3>E — Embody</h3>
         <p>The mindset and self-regulation to make the ask.</p></div>
-      <div class="stage"><h3>Review &amp; Reflect</h3>
-        <p>Learn from every negotiation and carry it into the next.</p></div>
+    </div>
+
+    <div class="narrow" style="margin-bottom:2.6rem">
+      <p style="margin-bottom:0.4rem"><strong>Plus — Review &amp; Reflect.</strong>
+        Learn from every negotiation and carry it into the next.</p>
+      <p>Two live practice sessions in pairs, followed by group review.</p>
     </div>
 
     <div class="narrow">
-      <p>Two live practice sessions in pairs, followed by group review.</p>
-      <p><strong>Then ten months of applying it.</strong> Monthly group surgeries where you
-        bring what's live. Three guest experts through the year, including Emilie Cousteau on
-        executive presence. A private WhatsApp group for what can't wait. Three cohort dinners
-        in London, included and entirely optional. And 1:1 time with me whenever something significant is
-        in play.</p>
+      <h3 style="margin-bottom:1.2rem">Then ten months of applying it.</h3>
+      <ul class="components">
+        <li><strong>Monthly surgeries</strong> — bring whatever is live.</li>
+        <li><strong>Three guest experts</strong> through the year, including Emilie Cousteau
+          on executive presence.</li>
+        <li><strong>A private WhatsApp group</strong> for what can't wait.</li>
+        <li><strong>Three cohort dinners</strong> in London — included, and entirely
+          optional.</li>
+        <li><strong>1:1 time with me</strong> whenever something significant is in play.</li>
+      </ul>
       <p><a class="btn" href="#apply">Apply for a place</a>
         <a class="btn ghost" href="#brochure" style="margin-left:0.6rem">Full detail is in the
         brochure</a></p>
     </div>
+  </div>
+</section>
+
+<!-- ============ WHY EIGHT ============ -->
+<section style="background:var(--paper-alt)">
+  <div class="wrap narrow">
+    <div class="kicker">Why eight</div>
+    <h2>A personal board of directors, not an audience.</h2>
+    <p>There are no more than eight women in Closing The Gap — deliberately.</p>
+    <p>Over the year, the group gets to know your context: what you're negotiating, the history
+      behind it, the patterns you're trying to change and what's coming next.</p>
+    <p>So when something significant is in play, you're not explaining your career from scratch
+      to a roomful of strangers. You're drawing on a small group of women who already understand
+      the context — and can challenge your thinking.</p>
+    <p class="lede">Think of it less as a cohort, and more as a personal board of directors for
+      the negotiations shaping your career.</p>
   </div>
 </section>
 
@@ -380,10 +434,14 @@
     <p class="narrow">These women completed an earlier, shorter version of the programme. The
       material they describe forms the core of Foundations.</p>
     <div class="vids">
-      <div class="vid"><iframe src="https://www.youtube-nocookie.com/embed/QdLe7TgOCts?rel=0" title="Cohort 1 testimonial" allowfullscreen loading="lazy"></iframe></div>
-      <div class="vid"><iframe src="https://www.youtube-nocookie.com/embed/iG0jN3Sg7hA?rel=0" title="Cohort 1 testimonial" allowfullscreen loading="lazy"></iframe></div>
-      <div class="vid"><iframe src="https://www.youtube-nocookie.com/embed/_BKL77A2gec?rel=0" title="Cohort 1 testimonial" allowfullscreen loading="lazy"></iframe></div>
-      <div class="vid"><iframe src="https://www.youtube-nocookie.com/embed/rWeK5VnZHqM?rel=0" title="Cohort 1 testimonial" allowfullscreen loading="lazy"></iframe></div>
+      <div class="vid facade" data-yt="QdLe7TgOCts" role="button" tabindex="0"
+           aria-label="Play testimonial"></div>
+      <div class="vid facade" data-yt="iG0jN3Sg7hA" role="button" tabindex="0"
+           aria-label="Play testimonial"></div>
+      <div class="vid facade" data-yt="_BKL77A2gec" role="button" tabindex="0"
+           aria-label="Play testimonial"></div>
+      <div class="vid facade" data-yt="rWeK5VnZHqM" role="button" tabindex="0"
+           aria-label="Play testimonial"></div>
     </div>
     <div class="cols">
       <blockquote>Before, it was absolute one hundred per cent dread — even to the point of
@@ -407,11 +465,15 @@
   <div class="wrap narrow">
     <div class="kicker">Who you'll work with</div>
     <img class="portrait" src="/assets/lucy-corporate.jpg" alt="Lucy Watson">
-    <p>I'm Lucy Watson, founder of Negotiate Like a Woman. I've spent 25+ years negotiating in
-      financial services and technology — including at Barclays, Oliver Wyman and as co-founder
-      and Commercial COO of an enterprise technology company.</p>
-    <p>Closing The Gap grew out of my own experience of discovering that knowing how to
-      negotiate wasn't enough — and digging into the research to understand why.</p>
+    <p>I'm Lucy Watson, founder of Negotiate Like a Woman. I spent 25+ years in financial
+      services and technology — including at Barclays and Oliver Wyman, and as co-founder of an
+      enterprise technology company.</p>
+    <p>Along the way, I've negotiated from many different perspectives: employee, leader,
+      co-founder, supplier and customer — across money, roles, resources, opportunities and
+      commercial relationships.</p>
+    <p>Closing The Gap grew out of realising that what negotiation training teaches is
+      incomplete for women — the same behaviour can land differently coming from a woman. I went
+      into the research to understand why.</p>
     <p style="clear:both">My full story is in <a href="#brochure">the brochure</a>.</p>
   </div>
 </section>
@@ -439,8 +501,12 @@
       <p>You may already have a professional development budget you can use. Negotiation isn't
         only about securing pay rises — better negotiators create value for their employers
         too.</p>
-      <p style="margin:0">Ask me for the Employer Negotiation Brief — a one-page business case
-        written in language that works for them.</p>
+      <p>The Employer Negotiation Brief is a one-page business case, written in language that
+        works for them.</p>
+      <p style="margin:0"><a class="btn ghost" href="/assets/employer-negotiation-brief.pdf"
+        target="_blank" rel="noopener"
+        onclick="if(typeof gtag==='function')gtag('event','employer_brief_open')">Get the
+        Employer Negotiation Brief</a></p>
     </div>
 
     <div class="guarantee" style="border-color:var(--rule)">
@@ -488,8 +554,9 @@
           <label class="radio"><input type="radio" name="LONDON_EVENTS" value="2" required> No</label>
         </fieldset>
 
-        <p class="note">I'll email you the brochure, and occasional updates about Closing The Gap
-          and my events. Unsubscribe any time.</p>
+        <p class="note">I'll email you the brochure, and occasional updates about Closing The
+          Gap. The question above only affects whether you also hear about London events.
+          Unsubscribe any time.</p>
 
         <!-- honeypot: real people never fill this in -->
         <input type="text" name="email_address_check" value="" tabindex="-1"
@@ -497,7 +564,7 @@
         <input type="hidden" name="locale" value="en">
         <input type="hidden" name="html_type" value="simple">
 
-        <button class="btn" type="submit">Send me the brochure</button>
+        <button class="btn" type="submit">Download the brochure</button>
       </form>
 
       <div id="signupdone" style="display:none">
@@ -594,6 +661,27 @@
      ======================================================================= -->
 <script>
 (function(){
+  // Video facades: show a thumbnail, load YouTube only when asked.
+  var fac = document.querySelectorAll('.vid.facade');
+  Array.prototype.forEach.call(fac, function(el){
+    var id = el.getAttribute('data-yt');
+    el.style.backgroundImage = "url('https://i.ytimg.com/vi/" + id + "/hqdefault.jpg')";
+    function play(){
+      var f = document.createElement('iframe');
+      f.src = 'https://www.youtube-nocookie.com/embed/' + id + '?rel=0&autoplay=1';
+      f.title = 'Cohort 1 testimonial';
+      f.setAttribute('allow', 'accelerometer; autoplay; encrypted-media; picture-in-picture');
+      f.setAttribute('allowfullscreen', '');
+      el.innerHTML = '';
+      el.classList.remove('facade');
+      el.appendChild(f);
+    }
+    el.addEventListener('click', play);
+    el.addEventListener('keydown', function(e){
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); play(); }
+    });
+  });
+
   var f = document.getElementById('brochureform');
   if (!f) return;
   f.addEventListener('submit', function(){
