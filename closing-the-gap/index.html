@@ -135,7 +135,7 @@
   }
   .calc .amount{display:flex;gap:0.5rem;align-items:stretch;max-width:16rem}
   .calc .amount select{
-    font-family:Georgia,serif;font-size:1.35rem;padding:0.6rem 0.5rem;
+    font-family:Georgia,serif;font-size:1.05rem;padding:0.6rem 0.4rem;
     border:1px solid var(--rule);background:#fff;color:var(--ink);cursor:pointer
   }
   .calc .amount input{flex:1;max-width:none}
@@ -320,9 +320,9 @@
         <label for="gap">How much might the gap have been, at the time?</label>
         <div class="amount">
           <select id="cur" aria-label="Currency">
-            <option value="GBP">£</option>
-            <option value="USD">$</option>
-            <option value="EUR">€</option>
+            <option value="GBP">£ GBP</option>
+            <option value="USD">$ USD</option>
+            <option value="EUR">€ EUR</option>
           </select>
           <input id="gap" type="number" min="0" max="500000" step="500" value="5000"
                  inputmode="numeric" aria-describedby="calcnote">
