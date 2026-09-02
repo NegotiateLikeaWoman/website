@@ -133,6 +133,12 @@
     font-family:Georgia,serif;font-size:1.35rem;padding:0.6rem 0.8rem;width:100%;max-width:16rem;
     border:1px solid var(--rule);background:#fff;color:var(--ink)
   }
+  .calc .amount{display:flex;gap:0.5rem;align-items:stretch;max-width:16rem}
+  .calc .amount select{
+    font-family:Georgia,serif;font-size:1.35rem;padding:0.6rem 0.5rem;
+    border:1px solid var(--rule);background:#fff;color:var(--ink);cursor:pointer
+  }
+  .calc .amount input{flex:1;max-width:none}
   .result{margin-top:1.8rem;padding-top:1.8rem;border-top:1px solid var(--rule)}
   .result .big{font-size:clamp(2rem,5vw,3rem);color:var(--accent);line-height:1.15;display:block;margin-bottom:0.6rem}
   .result .muted{font-size:0.72rem;color:var(--ink-soft);font-family:system-ui,-apple-system,sans-serif;line-height:1.5;max-width:38rem}
@@ -303,24 +309,32 @@
   <div class="wrap narrow">
     <div class="kicker">The cost of being undervalued</div>
     <h2>What could that gap add up to?</h2>
-    <p>Think of a negotiation earlier in your career — one where you might have secured more,
-      or didn't realise there was anything to secure. At the time, the difference probably
-      looked modest.</p>
+    <p>Think of a conversation, past or present — one where you might have secured more, or
+      didn't realise there was anything to secure. At the time, the difference probably looked
+      modest.</p>
     <p>But a lower starting point can follow you. When later rises build on it, the gap
       compounds.</p>
 
     <div class="calc">
       <div class="field">
         <label for="gap">How much might the gap have been, at the time?</label>
-        <input id="gap" type="number" min="0" max="500000" step="500" value="5000"
-               inputmode="numeric" aria-describedby="calcnote">
-        <p class="hint">In the money of the day — the number you'd have seen on the offer.
-          I'll adjust for inflation.</p>
+        <div class="amount">
+          <select id="cur" aria-label="Currency">
+            <option value="GBP">£</option>
+            <option value="USD">$</option>
+            <option value="EUR">€</option>
+          </select>
+          <input id="gap" type="number" min="0" max="500000" step="500" value="5000"
+                 inputmode="numeric" aria-describedby="calcnote">
+        </div>
+        <p class="hint">In the money of the day — the number on the offer. I'll adjust for
+          inflation.</p>
       </div>
       <div class="field three">
         <div>
-          <label for="yrs">Years ago</label>
+          <label for="yrs">How many years ago?</label>
           <input id="yrs" type="number" min="0" max="40" step="1" value="10" inputmode="numeric">
+          <p class="hint">Enter zero if this is current.</p>
         </div>
         <div>
           <label for="age">Your age</label>
@@ -329,27 +343,24 @@
         <div>
           <label for="ret">Retiring at</label>
           <input id="ret" type="number" min="40" max="85" step="1" value="68" inputmode="numeric">
+          <p class="hint" id="rethint"></p>
         </div>
       </div>
-      <p class="hint" style="margin:-0.8rem 0 1.4rem">68 is the State Pension age currently
-        legislated for anyone born after April 1977. Change it if you plan to stop earlier.</p>
 
       <div class="result" aria-live="polite">
         <span class="big" id="out">—</span>
         <p id="outline" style="margin:0 0 0.6rem">what that one conversation could cost you by
-          the time you retire</p>
+          retirement, in today's money, if the extra income were invested</p>
         <p id="outnow" style="margin:0 0 1rem;color:var(--accent)"></p>
         <div class="muted" id="calcnote">
           <p style="margin:0 0 0.5rem"><strong>All results are in today's money</strong>, so you
             can compare them with your salary now.</p>
           <ul class="assump">
-            <li><strong>Your figure is converted to today's money</strong> using the ONS
-              Consumer Prices Index.</li>
-            <li><strong>The shortfall is never corrected</strong> — no later rise makes up for it.</li>
+            <li><strong>The amount you enter is converted to today's money</strong> using
+              inflation figures for your currency.</li>
             <li><strong>The gap grows 1.5% a year above inflation</strong>, tracking senior pay
-              progression. So it widens in real terms as well as cash terms.</li>
-            <li><strong>The total assumes the missing income is invested</strong>, earning 3% a
-              year above inflation.</li>
+              progression, so it widens in real terms too.</li>
+            <li><strong>All of it is invested</strong>, earning 3% a year above inflation.</li>
           </ul>
           <p style="margin:0.5rem 0 0">Illustrative only, and not financial advice.</p>
         </div>
@@ -627,38 +638,67 @@
   var ret = document.getElementById('ret');
   var out = document.getElementById('out');
   var outnow = document.getElementById('outnow');
+  var cur = document.getElementById('cur');
+  var rethint = document.getElementById('rethint');
 
   var PAY = 0.015;   // gap grows this much above inflation
   var RET = 0.03;    // investment return above inflation
 
   /* People remember what they were paid in the money of the day, so the figure
-     typed in is treated as nominal and uprated to today using the ONS CPI index
-     (series D7BT, annual averages). Everything after that is in today's money. */
-  var CPI = {
-    1988:49.6, 1989:52.2, 1990:55.9, 1991:60.1, 1992:62.6, 1993:64.2, 1994:65.5,
-    1995:67.2, 1996:68.8, 1997:70.1, 1998:71.2, 1999:72.1, 2000:72.7, 2001:73.6,
-    2002:74.5, 2003:75.5, 2004:76.5, 2005:78.1, 2006:79.9, 2007:81.8, 2008:84.7,
-    2009:86.6, 2010:89.4, 2011:93.4, 2012:96.1, 2013:98.5, 2014:100.0, 2015:100.0,
-    2016:100.7, 2017:103.4, 2018:105.9, 2019:107.8, 2020:108.7, 2021:111.6,
-    2022:121.7, 2023:130.5, 2024:133.9, 2025:138.4
+     typed in is treated as nominal and uprated to today using the price index for
+     the chosen currency. Everything after that is in today's money.
+       GBP – ONS CPI, series D7BT (2015 = 100), latest index July 2026
+       USD – US BLS CPI-U annual averages, chained from 1988 = 100
+       EUR – Euro area HICP annual averages, chained from 1997 = 100
+     Update these once a year. */
+  var SERIES = {
+    GBP: { sym:'£', from:1988, now:142.9, idx:{
+      1988:49.6, 1989:52.2, 1990:55.9, 1991:60.1, 1992:62.6, 1993:64.2, 1994:65.5,
+      1995:67.2, 1996:68.8, 1997:70.1, 1998:71.2, 1999:72.1, 2000:72.7, 2001:73.6,
+      2002:74.5, 2003:75.5, 2004:76.5, 2005:78.1, 2006:79.9, 2007:81.8, 2008:84.7,
+      2009:86.6, 2010:89.4, 2011:93.4, 2012:96.1, 2013:98.5, 2014:100.0, 2015:100.0,
+      2016:100.7, 2017:103.4, 2018:105.9, 2019:107.8, 2020:108.7, 2021:111.6,
+      2022:121.7, 2023:130.5, 2024:133.9, 2025:138.4 },
+      note:'68 is the UK State Pension age for anyone born after April 1977.' },
+    USD: { sym:'$', from:1988, now:271.7, idx:{
+      1988:100.0, 1989:104.8, 1990:110.5, 1991:115.1, 1992:118.6, 1993:122.1,
+      1994:125.3, 1995:128.8, 1996:132.7, 1997:135.7, 1998:137.9, 1999:140.9,
+      2000:145.7, 2001:149.8, 2002:152.2, 2003:155.7, 2004:159.9, 2005:165.3,
+      2006:170.6, 2007:175.4, 2008:182.0, 2009:181.3, 2010:184.2, 2011:190.1,
+      2012:194.1, 2013:197.0, 2014:200.2, 2015:200.4, 2016:203.0, 2017:207.2,
+      2018:212.2, 2019:216.0, 2020:218.6, 2021:228.9, 2022:247.2, 2023:257.3,
+      2024:264.8, 2025:271.7 },
+      note:'67 is full Social Security retirement age for anyone born after 1959.' },
+    EUR: { sym:'€', from:1997, now:176.7, idx:{
+      1997:100.0, 1998:101.1, 1999:102.2, 2000:104.4, 2001:106.8, 2002:109.2,
+      2003:111.5, 2004:113.9, 2005:116.4, 2006:118.9, 2007:121.4, 2008:125.4,
+      2009:125.8, 2010:127.8, 2011:131.3, 2012:134.6, 2013:136.4, 2014:137.0,
+      2015:137.2, 2016:137.5, 2017:139.7, 2018:142.1, 2019:143.8, 2020:144.2,
+      2021:147.9, 2022:160.3, 2023:169.0, 2024:173.0, 2025:176.7 },
+      note:'' }
   };
-  var CPI_NOW = 142.9;     // July 2026, the latest published index
   var THIS_YEAR = 2026;
 
+  function series(){ return SERIES[cur.value] || SERIES.GBP; }
+
   function inTodaysMoney(nominal, yearsAgo){
+    var s = series();
     var y = THIS_YEAR - yearsAgo;
     if (y >= THIS_YEAR) return nominal;
-    if (y < 1988) y = 1988;
-    return nominal * CPI_NOW / CPI[y];
+    if (y < s.from) y = s.from;
+    return nominal * s.now / s.idx[y];
   }
 
   function round(n){
-    if (n >= 1000000) return '\u00a3' + (Math.round(n/100000)/10) + 'm';
+    var sym = series().sym;
+    if (n >= 1000000) return sym + (Math.round(n/100000)/10) + 'm';
     var step = n >= 100000 ? 10000 : (n >= 20000 ? 5000 : 1000);
-    return '\u00a3' + (Math.round(n/step)*step).toLocaleString('en-GB');
+    return sym + (Math.round(n/step)*step).toLocaleString('en-GB');
   }
 
   function update(){
+    rethint.textContent = series().note;
+    rethint.style.display = series().note ? '' : 'none';
     var a  = Math.min(Math.max(parseFloat(gap.value) || 0, 0), 500000);
     var ya = Math.min(Math.max(parseInt(yrs.value, 10) || 0, 0), 40);
     var ag = parseInt(age.value, 10);
@@ -673,31 +713,28 @@
     // the gap, restated in today's money before anything else happens to it
     var ar = inTodaysMoney(a, ya);
 
-    /* Value at retirement of every year's shortfall, invested, in today's money.
-       Each year's money is treated as arriving at the END of that year, so the
-       final year earns nothing. The conservative of the two conventions. */
-    var atRetirement = 0;
+    /* The whole span of the shortfall, past and future, valued at retirement.
+       Headline = lostIncome + growth. Each year's money is treated as arriving
+       at the END of that year, so the final year earns nothing — the
+       conservative of the two conventions. */
+    var lostIncome = 0, atRetirement = 0;
     for (var t = 0; t < total; t++){
-      atRetirement += ar * Math.pow(1 + PAY, t) * Math.pow(1 + RET, total - 1 - t);
+      var yr = ar * Math.pow(1 + PAY, t);
+      lostIncome   += yr;
+      atRetirement += yr * Math.pow(1 + RET, total - 1 - t);
     }
-
-    // shortfall actually incurred so far, in today's money
-    var soFar = 0;
-    for (var u = 0; u < ya; u++){ soFar += ar * Math.pow(1 + PAY, u); }
-
-    var gapNow = ar * Math.pow(1 + PAY, ya);
+    var growth = atRetirement - lostIncome;
 
     out.textContent = round(atRetirement);
 
-    if (ya >= 1){
-      outnow.textContent = 'That ' + round(a) + ' gap would be about ' + round(gapNow)
-        + ' a year today. You’ve already missed around ' + round(soFar) + ' of income.';
-    } else {
-      outnow.textContent = 'It starts at ' + round(a) + ' a year, and widens from there.';
-    }
+    outnow.textContent = 'Of which lost income ' + round(lostIncome)
+      + ', investment growth ' + round(growth) + '.';
   }
 
-  [gap, yrs, age, ret].forEach(function(el){ el.addEventListener('input', update); });
+  [gap, yrs, age, ret, cur].forEach(function(el){
+    el.addEventListener('input', update);
+    el.addEventListener('change', update);
+  });
   update();
 })();
 </script>
