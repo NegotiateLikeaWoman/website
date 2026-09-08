@@ -96,6 +96,14 @@
     color:var(--accent);margin-bottom:1.4rem
   }
   .hero{padding:5.5rem 0 4.5rem;background:var(--paper-alt)}
+  .hero-grid{display:grid;grid-template-columns:minmax(0,1fr) 19rem;gap:3.5rem;align-items:center}
+  .hero-photo{
+    width:100%;aspect-ratio:54/75.5;object-fit:cover;object-position:50% 30%;display:block
+  }
+  @media(max-width:880px){
+    .hero-grid{grid-template-columns:1fr;gap:2.2rem}
+    .hero-photo{width:11rem;aspect-ratio:1/1;margin-top:0.4rem}
+  }
   .hero .sub{font-size:1.35rem;color:var(--ink-soft);max-width:34rem;margin-bottom:2rem}
   .facts{
     display:flex;flex-wrap:wrap;gap:2.4rem;margin-top:2.4rem;
@@ -235,14 +243,20 @@
 <!-- ============ HERO ============ -->
 <header class="hero">
   <div class="wrap">
-    <div class="kicker">A 12-month programme by Negotiate Like a Woman</div>
-    <h1>Closing The Gap</h1>
-    <p class="sub">From undervalued and overlooked, to securing the reward, respect and
-      influence your work deserves.</p>
-    <p style="font-size:1.15rem;color:var(--accent);max-width:34rem;margin:-1.2rem 0 2rem">
-      The gap doesn't close by working harder. It closes by negotiating.</p>
-    <a class="btn" href="#apply">Apply for a place</a>
-    <a class="btn ghost" href="#brochure" style="margin-left:0.6rem">Download the brochure</a>
+    <div class="hero-grid">
+      <div>
+        <div class="kicker">A 12-month programme by Negotiate Like a Woman</div>
+        <h1>Closing The Gap</h1>
+        <p class="sub">From undervalued and overlooked, to securing the reward, respect and
+          influence your work deserves.</p>
+        <p style="font-size:1.15rem;color:var(--accent);max-width:34rem;margin:-1.2rem 0 2rem">
+          The gap doesn't close by working harder. It closes by negotiating.</p>
+        <a class="btn" href="#apply">Apply for a place</a>
+        <a class="btn ghost" href="#brochure" style="margin-left:0.6rem">Download the brochure</a>
+      </div>
+      <img class="hero-photo" src="/assets/lucy-portrait.jpg"
+           alt="Lucy Watson, founder of Negotiate Like a Woman">
+    </div>
     <div class="facts">
       <div><span>Begins</span>16 October 2026</div>
       <div><span>Places</span>Maximum 8</div>
@@ -400,9 +414,9 @@
       "a negotiation".</p>
     <p>I'm a much better negotiator now. Not because I win every negotiation. I don't. I leave
       far less to chance.</p>
-    <p style="clear:both"><strong>Closing The Gap is the programme I wish I'd had twenty years
+    <p style="clear:both">My full story is in <a href="#brochure">the brochure</a>.</p>
+    <p><strong>Closing The Gap is the programme I wish I'd had twenty years
       earlier.</strong></p>
-    <p>My full story is in <a href="#brochure">the brochure</a>.</p>
 
     <blockquote style="margin-top:2.4rem">I would rather lie on a bed of nails than negotiate my
       pay. Lucy helped me through the whole process — and I secured a £38k p.a.
