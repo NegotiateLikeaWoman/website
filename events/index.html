@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Events — Negotiate Like a Woman</title>
+<meta name="description" content="Forthcoming events from Negotiate Like a Woman, including free live webinars and the Negotiation Supper Club.">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<meta name="theme-color" content="#7d2b3f">
+<link rel="canonical" href="https://negotiatelikeawoman.co/events/">
+<meta property="og:site_name" content="Negotiate Like a Woman">
+<meta property="og:locale" content="en_GB">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://negotiatelikeawoman.co/events/">
+<meta property="og:title" content="Events — Negotiate Like a Woman">
+<meta property="og:description" content="Forthcoming events, including free live webinars and the Negotiation Supper Club.">
+<style>
+  :root{
+    --ink:#1a1f2b; --ink-soft:#4a5260; --paper:#fbf9f6; --paper-alt:#f2ede7;
+    --accent:#7d2b3f; --accent-soft:#a8536a; --rule:#ddd5cb;
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0; background:var(--paper); color:var(--ink);
+    font-family:Georgia,'Times New Roman',serif; font-size:18px; line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+    display:flex; flex-direction:column; min-height:100vh;
+  }
+  .wrap{max-width:44rem;margin:0 auto;padding:0 1.6rem;width:100%}
+  main{flex:1;padding:4rem 0 4.5rem}
+  .kicker{
+    font-family:system-ui,-apple-system,sans-serif;
+    font-size:0.78rem;letter-spacing:0.18em;text-transform:uppercase;
+    color:var(--accent);margin-bottom:1.2rem
+  }
+  h1{font-size:clamp(2rem,5vw,2.9rem);font-weight:normal;line-height:1.15;margin:0 0 1.2rem}
+  h2{font-size:1.45rem;font-weight:normal;line-height:1.3;margin:0 0 0.8rem}
+  p{margin:0 0 1.1rem}
+  a{color:var(--accent)}
+  .lede{font-size:1.15rem;color:var(--ink-soft);margin-bottom:2.8rem}
+
+  .event{border-top:2px solid var(--accent);padding-top:1.6rem;margin-bottom:2.8rem}
+  .event .when{
+    font-family:system-ui,-apple-system,sans-serif;font-size:0.8rem;
+    letter-spacing:0.14em;text-transform:uppercase;color:var(--accent);
+    margin-bottom:0.9rem
+  }
+  .sessions{
+    display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;margin-top:1.8rem
+  }
+  .session{background:var(--paper-alt);padding:1.4rem 1.5rem}
+  .session .day{
+    font-family:system-ui,-apple-system,sans-serif;font-size:0.78rem;
+    letter-spacing:0.14em;text-transform:uppercase;color:var(--accent);
+    margin-bottom:0.3rem
+  }
+  .session .time{font-size:1.25rem;margin-bottom:1.1rem;display:block}
+  @media(max-width:620px){ .sessions{grid-template-columns:1fr} }
+
+  .btn{
+    display:inline-block;background:var(--accent);color:#fff;text-decoration:none;
+    padding:0.8rem 1.6rem;font-family:system-ui,-apple-system,sans-serif;
+    font-size:0.9rem;letter-spacing:0.03em
+  }
+  .btn:hover{background:var(--accent-soft)}
+
+  .more{
+    border-top:1px solid var(--rule);padding-top:1.8rem;margin-top:1rem;
+    font-size:1rem;color:var(--ink-soft)
+  }
+  .none{
+    background:var(--paper-alt);padding:1.6rem 1.8rem;margin-bottom:2.4rem;
+    color:var(--ink-soft)
+  }
+  .none p:last-child{margin:0}
+  h3.past-head{
+    font-family:system-ui,-apple-system,sans-serif;
+    font-size:0.78rem;letter-spacing:0.18em;text-transform:uppercase;
+    color:var(--accent);font-weight:400;margin:3.5rem 0 0;
+    padding-top:1.6rem;border-top:1px solid var(--rule)
+  }
+  ul.past{list-style:none;padding:0;margin:1.4rem 0 0}
+  ul.past li{
+    padding:1rem 0;border-bottom:1px solid var(--rule);
+    display:grid;grid-template-columns:9rem 1fr;gap:1.2rem;align-items:baseline
+  }
+  ul.past .pdate{
+    font-family:system-ui,-apple-system,sans-serif;font-size:0.8rem;
+    color:var(--ink-soft)
+  }
+  ul.past .ptitle{font-size:1.05rem}
+  ul.past .pnote{display:block;font-size:0.92rem;color:var(--ink-soft);margin-top:0.15rem}
+  @media(max-width:620px){ ul.past li{grid-template-columns:1fr;gap:0.2rem} }
+  footer{
+    background:var(--ink);color:var(--paper-alt);padding:2.6rem 0;
+    font-size:0.85rem;font-family:system-ui,-apple-system,sans-serif
+  }
+  footer a{color:var(--paper-alt)}
+  footer p{margin:0 0 0.6rem}
+  footer p:last-child{margin:0;opacity:0.75}
+</style>
+</head>
+<body>
+
+<main>
+  <div class="wrap">
+    <div class="kicker">Negotiate Like a Woman</div>
+    <h1>Forthcoming events</h1>
+    <p class="lede">Free live sessions, and the Negotiation Supper Club.</p>
+
+    <div id="upcoming"></div>
+
+    <p class="more">Want to hear about future events, including the Negotiation Supper Club?
+      <a href="https://tally.so/r/lb4akk">Add your name</a>.</p>
+
+    <div id="pastwrap"></div>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p><a href="/closing-the-gap/">Closing The Gap</a> &nbsp;·&nbsp;
+       <a href="/">negotiatelikeawoman.co</a> &nbsp;·&nbsp;
+       <a href="mailto:support@negotiationwhisperer.co">support@negotiationwhisperer.co</a></p>
+    <p>Negotiate Like a Woman is a trading name of Negotiation Whisperer Ltd, registered in
+       England and Wales, company no. 16808191.</p>
+    <p>© 2026 Lucy Watson &nbsp;·&nbsp;
+       <a href="https://www.negotiationwhisperer.co/privacy_policy">Privacy</a> &nbsp;·&nbsp;
+       <a href="/terms/">Terms</a></p>
+  </div>
+</footer>
+
+<!-- =====================================================================
+     THE EVENTS LIST — this is the only part you need to edit.
+
+     Add a new event to the top of the list. Once its last date has
+     passed, it moves itself into "Previously" the next day. Nothing
+     else needs changing.
+
+       date    the day it happens, YYYY-MM-DD. For something with two
+               sittings, give each sitting its own line in "sessions".
+       kind    the small label above the title.
+       note    one sentence. Optional.
+       link    optional — a recording, write-up or booking page. For
+               past events this becomes "Watch the recording".
+     ===================================================================== -->
+<script>
+var EVENTS = [
+  {
+    kind:  'Free webinar',
+    title: "How to Negotiate for More When You Can't Afford to Walk Away",
+    when:  'September 2026',
+    blurb: "What do you do when there's an outcome you really want — and asking for more feels " +
+           "as though it could put the whole thing at risk? Most negotiation advice tells you " +
+           "to line up alternatives and be ready to walk. That's harder to act on in this market.",
+    note:  'A 45-minute session followed by 15 minutes of questions. ' +
+           '<strong>The two dates are the same session</strong> — pick whichever suits you.',
+    sessions: [
+      { date:'2026-09-23', day:'Wednesday 23 September', time:'5–6pm UK',
+        url:'https://luma.com/wp1bhyo1' },
+      { date:'2026-09-25', day:'Friday 25 September',    time:'12–1pm UK',
+        url:'https://luma.com/dgtsj4t2' }
+    ]
+  },
+  {
+    kind:  'Negotiation Supper Club',
+    title: 'Value and negotiation through the menopause transition',
+    date:  '2026-09-09',
+    when:  '9 September 2026',
+    place: 'Home House Studio, Marylebone.'
+  },
+  {
+    kind:  'In conversation',
+    title: 'Can You Negotiate Presence?',
+    date:  '2026-07-24',
+    when:  '24 July 2026',
+    place: 'With Emilie Cousteau. Online.'
+  },
+  {
+    kind:  'In conversation',
+    title: 'Cuts looming? Worried your head may be on the block?',
+    date:  '2026-07-08',
+    when:  '8 July 2026',
+    place: 'With Sharon von Simson, former Global VP, HR. Online.'
+  },
+  {
+    kind:  'Podcast',
+    title: 'Negotiate Like a Woman',
+    date:  '2026-05-19',
+    when:  '19 May 2026',
+    place: 'Empathy at The Table, episode 67.',
+    link:  'https://www.youtube.com/watch?v=tBAMCmDATsE',
+    linkText: 'Watch the episode'
+  },
+  {
+    kind:  'Negotiation Supper Club',
+    title: 'Simplicity, Bermondsey',
+    date:  '2026-05-13',
+    when:  '13 May 2026'
+  },
+  {
+    kind:  'Podcast',
+    title: 'The Art of Negotiation',
+    date:  '2026-04-28',
+    when:  '28 April 2026',
+    place: 'Women Who Lead & Scale, with Kelly Quinn and Aliya Musa.',
+    link:  'https://podcasts.apple.com/gb/podcast/the-art-of-negotiation-w-lucy-watson/id1828192802?i=1000763944550',
+    linkText: 'Listen to the episode'
+  },
+  {
+    kind:  'Conference talk',
+    title: 'OneTechWorld 2026, WeAreTechWomen',
+    date:  '2026-03-31',
+    when:  'March 2026',
+    link:  'https://www.youtube.com/watch?v=xN5zHIsvodI',
+    linkText: 'Watch the talk'
+  }
+];
+</script>
+
+<script>
+(function(){
+  var up = document.getElementById('upcoming');
+  var pastwrap = document.getElementById('pastwrap');
+  if (!up || !pastwrap) return;
+
+  // Today at midnight, so an event stays "upcoming" for the whole of its day.
+  var today = new Date(); today.setHours(0,0,0,0);
+  function esc(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;'); }
+  function last(ev){
+    return ev.sessions ? ev.sessions.map(function(s){ return s.date; }).sort().pop() : ev.date;
+  }
+  function asDate(d){ var p=d.split('-'); return new Date(+p[0], +p[1]-1, +p[2]); }
+
+  var upcoming = [], past = [];
+  EVENTS.forEach(function(ev){
+    (asDate(last(ev)) >= today ? upcoming : past).push(ev);
+  });
+  upcoming.sort(function(a,b){ return last(a) < last(b) ? -1 : 1; });
+  past.sort(function(a,b){ return last(a) > last(b) ? -1 : 1; });
+
+  if (!upcoming.length){
+    up.innerHTML = '<div class="none"><p>Nothing scheduled at the moment. Add your name below ' +
+      'and I’ll let you know what’s next.</p></div>';
+  }
+
+  upcoming.forEach(function(ev){
+    var live = (ev.sessions || []).filter(function(s){ return asDate(s.date) >= today; });
+    var html = '<div class="event">' +
+      '<div class="when">' + esc(ev.kind) + '</div>' +
+      '<h2>' + esc(ev.title) + '</h2>' +
+      (ev.blurb ? '<p>' + esc(ev.blurb) + '</p>' : '') +
+      (ev.note && live.length > 1 ? '<p>' + ev.note + '</p>' : '') +
+      '<div class="sessions">';
+    live.forEach(function(s){
+      html += '<div class="session">' +
+        '<div class="day">' + esc(s.day) + '</div>' +
+        '<span class="time">' + esc(s.time) + '</span>' +
+        '<a class="btn" href="' + s.url + '">Register</a></div>';
+    });
+    up.innerHTML += html + '</div></div>';
+  });
+
+  if (past.length){
+    var rows = past.map(function(ev){
+      var extra = [];
+      if (ev.place) extra.push(esc(ev.place));
+      if (ev.link)  extra.push('<a href="' + ev.link + '">' +
+                               esc(ev.linkText || 'Watch the recording') + '</a>');
+      return '<li><span class="pdate">' + esc(ev.when || '') + '</span>' +
+        '<span><span class="ptitle">' + esc(ev.kind) + ' — ' + esc(ev.title) + '</span>' +
+        (extra.length ? '<span class="pnote">' + extra.join(' &nbsp;·&nbsp; ') + '</span>' : '') +
+        '</span></li>';
+    }).join('');
+    pastwrap.innerHTML = '<h3 class="past-head">Previously</h3><ul class="past">' + rows + '</ul>';
+  }
+})();
+</script>
+
+</body>
+</html>
