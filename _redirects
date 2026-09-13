@@ -1,0 +1,18 @@
+# Short links for sharing — Cloudflare Pages redirect rules.
+#
+# Each line: the short path, where it goes, then 302.
+# 302 (temporary) is deliberate: browsers don't cache it, so a short link
+# can be repointed at a different event later without anyone being stuck
+# on the old destination.
+#
+# Paste the short form into WhatsApp, a slide, a business card:
+#     negotiatelikeawoman.co/w
+#
+# The tracking is added on arrival and travels through to Luma, so the
+# registration shows its true source in Luma's own reporting.
+
+/w    /events/?utm_source=whatsapp&utm_medium=community&utm_campaign=walk_away_webinar_sep_2026    302
+
+# Add more as needed, one per channel — same page, different source:
+# /li   /events/?utm_source=linkedin&utm_medium=post&utm_campaign=walk_away_webinar_sep_2026       302
+# /sub  /events/?utm_source=substack&utm_medium=newsletter&utm_campaign=walk_away_webinar_sep_2026 302
