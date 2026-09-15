@@ -5,14 +5,15 @@
 # can be repointed at a different event later without anyone being stuck
 # on the old destination.
 #
-# Paste the short form into WhatsApp, a slide, a business card:
+# Paste the short form into WhatsApp, a Facebook group, a slide, a card:
 #     negotiatelikeawoman.co/w
 #
 # The tracking is added on arrival and travels through to Luma, so the
 # registration shows its true source in Luma's own reporting.
 
-/w    /events/?utm_source=whatsapp&utm_medium=community&utm_campaign=walk_away_webinar_sep_2026    302
+/w    /events/?utm_source=whatsapp&utm_medium=community&utm_campaign=walk_away_webinar_sep_2026            302
+/fb   /events/?utm_source=facebook&utm_medium=organic_social&utm_campaign=walk_away_webinar_sep_2026       302
 
 # Add more as needed, one per channel — same page, different source:
-# /li   /events/?utm_source=linkedin&utm_medium=post&utm_campaign=walk_away_webinar_sep_2026       302
-# /sub  /events/?utm_source=substack&utm_medium=newsletter&utm_campaign=walk_away_webinar_sep_2026 302
+# /li   /events/?utm_source=linkedin&utm_medium=organic_social&utm_campaign=walk_away_webinar_sep_2026     302
+# /sub  /events/?utm_source=substack&utm_medium=newsletter&utm_campaign=walk_away_webinar_sep_2026         302
