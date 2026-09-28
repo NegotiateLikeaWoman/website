@@ -95,6 +95,16 @@
   .signup input:focus{outline:2px solid var(--accent);outline-offset:-2px}
   .row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
   @media(max-width:560px){ .row{grid-template-columns:1fr} .signup{padding:1.6rem} }
+  fieldset.choice{border:0;padding:0;margin:0 0 1.2rem}
+  fieldset.choice legend{
+    font-family:system-ui,-apple-system,sans-serif;font-size:0.9rem;
+    padding:0;margin-bottom:0.5rem
+  }
+  fieldset.choice label{
+    display:inline-flex;align-items:center;gap:0.4rem;margin:0 1.4rem 0 0;
+    font-family:system-ui,-apple-system,sans-serif;font-size:0.92rem;cursor:pointer
+  }
+  fieldset.choice input{accent-color:var(--accent)}
   .btn{
     display:inline-block;background:var(--accent);color:#fff;text-decoration:none;
     padding:0.8rem 1.7rem;font-family:system-ui,-apple-system,sans-serif;
@@ -155,9 +165,27 @@
         can come back to it. The recording is available until 9 October.</p>
 
       <form id="replayform" method="POST" target="brevo_sink"
-        action="https://fc846cc2.sibforms.com/serve/MUIFAA1sYlKgoYF2kl_4QjjgjIa_wtpZKrfq2_0iTP-YoDefxw0Carq6jAlIhOpYRCqjdyBzadAO12Ozk50cIhgAjmo9MicZPLZH1iXUcsC5kpNbCWsCgPWgK1nNyweVnJAtE3Ks7GAFMngrF7Jk9UqRSX1QpT3T66xMsmkKfbncDo2QAbX4-8eHsCuODUaoHRzb7rugl2IZQXO0ng==">
-        <label for="em">Your email</label>
-        <input type="email" id="em" name="EMAIL" autocomplete="email" required>
+        action="https://fc846cc2.sibforms.com/serve/MUIFAAZyKIk0VG_bjmZ-kR0NK9rIecUvGxU8M3U4MpA3hb5hFlyW_54wSxBu0Q28C263Wuf-J35INu9Vm9nlMDpVaCRnBRgOUOBiNX_X_4OUyDgbsK_QTHjXKoLBhnzi4pWtEkJEG_Z8CzHM3dTk7w0AYoFzaCE8VmQaFdGye-IfVi8-c_4lLg0FFj_OHYUKTN009NFQkDr7PoQ82w==">
+        <div class="row">
+          <div>
+            <label for="fn">First name</label>
+            <input type="text" id="fn" name="FIRSTNAME" maxlength="200"
+              autocomplete="given-name" required>
+          </div>
+          <div>
+            <label for="em">Email</label>
+            <input type="email" id="em" name="EMAIL" autocomplete="email" required>
+          </div>
+        </div>
+
+        <fieldset class="choice">
+          <legend>Would you like to hear about in-person events in London, including the
+            Negotiation Supper Club?</legend>
+          <label><input type="radio" name="LONDON_EVENTS" value="1" required> Yes, those
+            too</label>
+          <label><input type="radio" name="LONDON_EVENTS" value="2"> No — I'm not near
+            London</label>
+        </fieldset>
 
         <input type="text" name="email_address_check" value="" style="display:none"
           tabindex="-1" autocomplete="off" aria-hidden="true">
