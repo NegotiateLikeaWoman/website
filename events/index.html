@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Free webinar: How to Negotiate for More | Negotiate Like a Woman</title>  <!-- was: Events — Negotiate Like a Woman -->
-<meta name="description" content="Choose from two live sessions: Wednesday 23 September at 5pm or Friday 25 September at 12pm UK.">  <!-- was: Forthcoming events from Negotiate Like a Woman, including free live webinars and the Negotiation Supper Club. -->
+<title>Events — Negotiate Like a Woman</title>
+<meta name="description" content="Forthcoming events from Negotiate Like a Woman, including free live webinars and the Negotiation Supper Club. Plus the recording of the recent session.">
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
@@ -14,18 +14,18 @@
 <meta property="og:locale" content="en_GB">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://negotiatelikeawoman.co/events/">
-<meta property="og:title" content="Free webinar: How to Negotiate for More | Negotiate Like a Woman">  <!-- was: Events — Negotiate Like a Woman -->
-<meta property="og:description" content="Choose from two live sessions: Wednesday 23 September at 5pm or Friday 25 September at 12pm UK.">  <!-- was: Forthcoming events, including free live webinars and the Negotiation Supper Club. -->
+<meta property="og:title" content="Events — Negotiate Like a Woman">
+<meta property="og:description" content="Forthcoming events, including free live webinars and the Negotiation Supper Club. Plus the recording of the recent session.">
 
-<meta property="og:image" content="https://negotiatelikeawoman.co/assets/og-webinar-v2.jpg">
+<meta property="og:image" content="https://negotiatelikeawoman.co/assets/og-webinar-replay.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:type" content="image/jpeg">
-<meta property="og:image:alt" content="How to Negotiate for More When You Can't Afford to Walk Away — free live session, 23 and 25 September">
+<meta property="og:image:alt" content="How to Negotiate for More When You Can't Afford to Walk Away — watch the recording">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Free webinar: How to Negotiate for More | Negotiate Like a Woman">
-<meta name="twitter:description" content="Choose from two live sessions: Wednesday 23 September at 5pm or Friday 25 September at 12pm UK.">
-<meta name="twitter:image" content="https://negotiatelikeawoman.co/assets/og-webinar-v2.jpg">
+<meta name="twitter:title" content="Events — Negotiate Like a Woman">
+<meta name="twitter:description" content="Forthcoming events, including free live webinars and the Negotiation Supper Club. Plus the recording of the recent session.">
+<meta name="twitter:image" content="https://negotiatelikeawoman.co/assets/og-webinar-replay.jpg">
 <style>
   :root{
     --ink:#1a1f2b; --ink-soft:#4a5260; --paper:#fbf9f6; --paper-alt:#f2ede7;
@@ -80,6 +80,30 @@
     border-top:1px solid var(--rule);padding-top:1.8rem;margin-top:1rem;
     font-size:1rem;color:var(--ink-soft)
   }
+  /* the replay card */
+  .replay{
+    background:var(--paper-alt);display:grid;grid-template-columns:15rem 1fr;
+    gap:0;margin-bottom:2.8rem;align-items:stretch
+  }
+  .replay .shot{
+    background:#1a1f2b center/cover no-repeat;position:relative;min-height:9rem
+  }
+  .replay .shot::after{content:'';position:absolute;inset:0;background:rgba(26,31,43,0.3)}
+  .replay .shot .play{
+    position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:2;
+    width:3.2rem;height:3.2rem;border-radius:50%;background:rgba(125,43,63,0.94);
+    display:flex;align-items:center;justify-content:center
+  }
+  .replay .shot .play::before{
+    content:'';border-left:0.9rem solid #fff;border-top:0.55rem solid transparent;
+    border-bottom:0.55rem solid transparent;margin-left:0.22rem
+  }
+  .replay .body{padding:1.5rem 1.7rem}
+  .replay .body p{margin:0 0 1.1rem;font-size:1rem}
+  @media(max-width:620px){
+    .replay{grid-template-columns:1fr}
+    .replay .shot{padding-bottom:52%}
+  }
   .none{
     background:var(--paper-alt);padding:1.6rem 1.8rem;margin-bottom:2.4rem;
     color:var(--ink-soft)
@@ -123,6 +147,23 @@
 
     <div id="upcoming"></div>
 
+    <!-- The recording of the September session. Lives on its own page,
+         where subscribing unlocks it. -->
+    <h3 class="past-head" style="margin:0 0 1rem;border-top:0;padding-top:0">Watch the recording</h3>
+    <div class="replay">
+      <a class="shot" href="/webinar/" aria-label="Watch the recording"
+         style="background-image:url('https://i.ytimg.com/vi/kKm3gLoGxWs/hqdefault.jpg')">
+        <span class="play" aria-hidden="true"></span>
+      </a>
+      <div class="body">
+        <h2 style="font-size:1.25rem">How to Negotiate for More When You Can't Afford to
+          Walk Away</h2>
+        <p>The September session, recorded. Subscribe and it opens straight away — you'll also
+          hear about future events, including the Negotiation Supper Club.</p>
+        <a class="btn" href="/webinar/">Watch it free</a>
+      </div>
+    </div>
+
     <p class="more">Want to hear about future events, including the Negotiation Supper Club?
       <a href="https://tally.so/r/lb4akk">Add your name</a>.</p>
 
@@ -134,9 +175,7 @@
   <div class="wrap">
     <p><a href="/closing-the-gap/">Closing The Gap</a> &nbsp;·&nbsp;
        <a href="/">negotiatelikeawoman.co</a> &nbsp;·&nbsp;
-       <a href="https://www.linkedin.com/in/watsonlucy/">LinkedIn</a> &nbsp;·&nbsp;
-       <a href="https://wa.me/message/WIDHW2ET3D56J1">WhatsApp</a> &nbsp;·&nbsp;
-       <a href="mailto:hello@negotiationwhisperer.co">hello@negotiationwhisperer.co</a></p>
+       <a href="mailto:support@negotiationwhisperer.co">support@negotiationwhisperer.co</a></p>
     <p>Negotiate Like a Woman is a trading name of Negotiation Whisperer Ltd, registered in
        England and Wales, company no. 16808191.</p>
     <p>© 2026 Lucy Watson &nbsp;·&nbsp;
@@ -171,6 +210,8 @@ var EVENTS = [
            "to line up alternatives and be ready to walk. That's harder to act on in this market.",
     note:  'A 45-minute session followed by 15 minutes of questions. ' +
            '<strong>The two dates are the same session</strong> — pick whichever suits you.',
+    link: '/webinar/',
+    linkText: 'Watch the recording',
     sessions: [
       { date:'2026-09-23', day:'Wednesday 23 September', time:'5–6pm UK',
         url:'https://luma.com/wp1bhyo1' },
