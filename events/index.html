@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Events — Negotiate Like a Woman</title>
-<meta name="description" content="Forthcoming events from Negotiate Like a Woman, including free live webinars and the Negotiation Supper Club. Plus the recording of the recent session.">
+<meta name="description" content="Forthcoming events from Negotiate Like a Woman, including free live webinars and the Negotiation Supper Club. Plus recent webinar recordings.">
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
@@ -15,7 +15,7 @@
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://negotiatelikeawoman.co/events/">
 <meta property="og:title" content="Events — Negotiate Like a Woman">
-<meta property="og:description" content="Forthcoming events, including free live webinars and the Negotiation Supper Club. Plus the recording of the recent session.">
+<meta property="og:description" content="Forthcoming events, including free live webinars and the Negotiation Supper Club. Plus recent webinar recordings.">
 
 <meta property="og:image" content="https://negotiatelikeawoman.co/assets/og-webinar-replay.jpg">
 <meta property="og:image:width" content="1200">
@@ -24,7 +24,7 @@
 <meta property="og:image:alt" content="How to Negotiate for More When You Can't Afford to Walk Away — watch the recording">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Events — Negotiate Like a Woman">
-<meta name="twitter:description" content="Forthcoming events, including free live webinars and the Negotiation Supper Club. Plus the recording of the recent session.">
+<meta name="twitter:description" content="Forthcoming events, including free live webinars and the Negotiation Supper Club. Plus recent webinar recordings.">
 <meta name="twitter:image" content="https://negotiatelikeawoman.co/assets/og-webinar-replay.jpg">
 <style>
   :root{
@@ -143,7 +143,7 @@
   <div class="wrap">
     <div class="kicker">Negotiate Like a Woman</div>
     <h1>Forthcoming events</h1>
-    <p class="lede">Free live sessions, and the Negotiation Supper Club.</p>
+    <p class="lede">Virtual and in-person events — including the Negotiation Supper Club.</p>
 
     <div id="upcoming"></div>
 
@@ -297,8 +297,8 @@ var EVENTS = [
   past.sort(function(a,b){ return last(a) > last(b) ? -1 : 1; });
 
   if (!upcoming.length){
-    up.innerHTML = '<div class="none"><p>Nothing scheduled at the moment. Add your name below ' +
-      'and I’ll let you know what’s next.</p></div>';
+    up.innerHTML = '<div class="none"><p><strong>New events coming very soon.</strong> ' +
+      'Add your name below and be the first to hear.</p></div>';
   }
 
   upcoming.forEach(function(ev){
