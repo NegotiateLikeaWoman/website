@@ -149,10 +149,18 @@
     <div class="frame" id="frame" style="display:none"></div>
 
     <!-- ===================== SIGNUP =====================
-         Posts to Brevo's "Webinar replay - How to Negotiate for More" form.
-         Adds the contact to Main list and Events & updates signups, and
-         Brevo sends a double opt-in email whose confirm link lands on
-         /webinar/watch/ — their permanent copy.
+         Posts to Brevo's "Webinar replay - watch and subscribe" form.
+         Single opt-in: the contact joins Main list and Events & updates
+         the moment this is submitted. Brevo then sends the "Webinar replay
+         - thank you and link" email, which carries a plain link to
+         /webinar/watch/ — their own copy, open until 16 October.
+
+         Single rather than double opt-in on purpose: the video unlocks on
+         this page, so a confirm-first email would never get clicked and
+         almost nobody would end up on the list.
+
+         LONDON_EVENTS is a required radio (1 = yes, 2 = no). It must stay
+         required here, because Brevo rejects the post without it.
 
          email_address_check is Brevo's honeypot: it must stay empty and
          hidden. Bots fill it in; people don't.
