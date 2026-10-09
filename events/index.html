@@ -75,6 +75,13 @@
     font-size:0.9rem;letter-spacing:0.03em
   }
   .btn:hover{background:var(--accent-soft)}
+  .session .cal{
+    display:inline-block;margin-left:0.9rem;font-family:system-ui,-apple-system,sans-serif;
+    font-size:0.82rem;color:var(--accent)
+  }
+  @media(max-width:620px){
+    .session .cal{display:block;margin:0.7rem 0 0}
+  }
 
   .more{
     border-top:1px solid var(--rule);padding-top:1.8rem;margin-top:1rem;
@@ -199,6 +206,20 @@
 <script>
 var EVENTS = [
   {
+    kind:  'Substack Live',
+    title: 'In conversation with Sharon von Simson',
+    when:  '21 October 2026',
+    blurb: "Sharon spent decades in senior HR roles, including years as Global VP. She knows " +
+           "how decisions actually get made — who is in the room, what moves a number, and " +
+           "what doesn't.",
+    sessions: [
+      { date:'2026-10-21', day:'Wednesday 21 October', time:'5pm UK',
+        url:'https://open.substack.com/live-stream/397066',
+        cta:'Join on Substack',
+        cal:'https://calendar.google.com/calendar/event?action=TEMPLATE&tmeid=M25hYnJvZzJ2cWZidjFpMHBvYzJsbXJyYmEgbHVjeUBuZWdvdGlhdGlvbndoaXNwZXJlci5jbw&tmsrc=lucy%40negotiationwhisperer.co' }
+    ]
+  },
+  {
     kind:  'Free webinar',
     title: "How to Negotiate for More When You Can't Afford to Walk Away",
     when:  'September 2026',
@@ -310,7 +331,11 @@ var EVENTS = [
       html += '<div class="session">' +
         '<div class="day">' + esc(s.day) + '</div>' +
         '<span class="time">' + esc(s.time) + '</span>' +
-        '<a class="btn" href="' + s.url + '">Register</a></div>';
+        '<a class="btn" href="' + s.url + '">' + esc(s.cta || 'Register') + '</a>' +
+        // Optional "add to calendar" link, for platforms that don't offer one.
+        (s.cal ? '<a class="cal" href="' + s.cal + '" target="_blank" rel="noopener">' +
+                 'Add to calendar</a>' : '') +
+        '</div>';
     });
     up.innerHTML += html + '</div></div>';
   });
