@@ -18,9 +18,9 @@ shown beside the button), as the consent record.
 ## What the platform needs (Brevo now, or whatever replaces it)
 
 1. **Contact fields**, all text, named as in `LEAD.fields`:
-   `SIGNUP_DATE, CONSENT_TEXT, CALC_STATUS, CALC_TOTAL, CALC_LOST_INCOME,
-   CALC_GROWTH, CALC_GAP_YEAR, CALC_GAP_MONTH, CALC_RETIRE_AT, CALC_WAIT_NOW,
-   CALC_WAIT_1Y, CALC_WAIT_3Y, CALC_ONE_YEAR_DELAY, CALC_SUMMARY`
+   `SIGNUP_DATE, CONSENT_TEXT, CALC_TOTAL, CALC_LOST_INCOME, CALC_GROWTH,
+   CALC_GAP_YEAR, CALC_GAP_MONTH, CALC_RETIRE_AT, CALC_LOST_1Y, CALC_LOST_5Y,
+   CALC_SUMMARY`
    (plus `UTM_SOURCE` … `UTM_TERM` if you want attribution).
 2. **A form** that accepts all of those as hidden fields and adds the contact to
    the events list. Put its endpoint in `LEAD.action`. Brevo and MailerLite
@@ -29,11 +29,11 @@ shown beside the button), as the consent record.
    platform accepts a long value in `CALC_SUMMARY` and `CONSENT_TEXT`.
 3. **An automation**: when someone signs up through that form, send the email
    below straight away. If the form uses double opt-in, it goes once they confirm.
-   Then test it with one submission of each kind (gap still open, gap closed).
+   Then test it with a real submission.
 
-`CALC_STATUS` is `current` or `closed`. For a closed gap, the `CALC_WAIT_*` and
-`CALC_ONE_YEAR_DELAY` fields are empty, and the email skips the
-cost-of-waiting section and the three steps.
+The calculator runs from today forward: the gap is one you have now (or one
+coming up), and the breakdown shows what closing it today wins back against
+what waiting loses for good.
 
 ## The email — draft, for Drafter and Reviewer
 
@@ -41,27 +41,28 @@ Merge tags are written in Brevo's style (`{{ contact.X }}`). Rename them for
 another platform.
 
 **Subject:** Your pay gap breakdown
-**Preview:** What it adds up to, and what waiting costs.
+**Preview:** What it adds up to, and what waiting costs you.
 
 Hi {{ contact.FIRSTNAME }},
 
 Here's the breakdown from the calculator.
 
-{% if contact.CALC_STATUS == "current" %}
 **A gap of {{ contact.CALC_GAP_YEAR }} a year adds up to {{ contact.CALC_TOTAL }}
 by the time you're {{ contact.CALC_RETIRE_AT }}** — {{ contact.CALC_LOST_INCOME }} in
 lost income, and {{ contact.CALC_GROWTH }} in the growth that money would have
 earned.
 
-**The cost of waiting.** What the gap costs you by retirement, depending on when it
-closes:
+**The cost of waiting.** Close the gap today and the full {{ contact.CALC_TOTAL }} is
+still yours to win back by retirement. Every year it stays open, part of it is gone
+for good:
 
-- Closed now: {{ contact.CALC_WAIT_NOW }}
-- In a year: {{ contact.CALC_WAIT_1Y }}
-- In three years: {{ contact.CALC_WAIT_3Y }}
-- Never: {{ contact.CALC_TOTAL }}
+- Close it today: nothing lost
+- Wait a year: {{ contact.CALC_LOST_1Y }} you never win back
+- Wait five years: {{ contact.CALC_LOST_5Y }}
+- Never close it: {{ contact.CALC_TOTAL }}
 
-Leaving it one more year costs about {{ contact.CALC_ONE_YEAR_DELAY }}.
+And the longer a gap stays in place, the more it becomes the accepted arrangement,
+and the harder it is to shift.
 
 **In a month,** that gap is about {{ contact.CALC_GAP_MONTH }} before tax.
 
@@ -104,15 +105,6 @@ help each other?
 Start ahead of time. The longer you put off those conversations, the more likely it
 is that someone else's name is already in the picture—or that they have been lined
 up for the opportunity.
-{% else %}
-**That gap costs you {{ contact.CALC_TOTAL }} by the time you're
-{{ contact.CALC_RETIRE_AT }}** — {{ contact.CALC_LOST_INCOME }} in income while it
-lasted, and {{ contact.CALC_GROWTH }} in the growth that money would have earned.
-
-The gap has closed, so nothing more is building up. What it took can't be reversed
-by a correction now. Most of the total is the growth, which is why a gap early in a
-career costs more than the same gap later.
-{% endif %}
 
 All figures are in today's money: the gap grows 1.5% a year above inflation and is
 invested at 3% above inflation, before tax. Illustrative only, not financial advice.
@@ -123,5 +115,5 @@ What's the biggest obstacle to changing your pay? Reply and tell me.
 
 ---
 
-`CALC_SUMMARY` holds the whole breakdown as plain text. Use it if a platform can't
-do the `if` / `else` above, or for a plain-text version of the email.
+`CALC_SUMMARY` holds the whole breakdown as plain text. Use it for a plain-text
+version of the email.
