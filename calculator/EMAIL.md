@@ -81,9 +81,7 @@ with it.
 
 Is that viable where you are? Consider the firm's size, its situation and
 priorities, the opportunities available, and your relationship with the people
-whose support you would need. Is there room to reshape your role or move into
-another one internally? Or are the constraints such that you need to look
-elsewhere?
+whose support you would need.
 
 **2. Where could you make a uniquely valuable contribution?**
 What problem or opportunity matters to the key decision maker(s)? What evidence can
