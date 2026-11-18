@@ -14,16 +14,16 @@
 <meta property="og:locale" content="en_GB">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://negotiatelikeawoman.co/calculator/">
-<meta property="og:title" content="What could one conversation cost you?">
-<meta property="og:description" content="A gap in pay that looks modest at the time compounds over a career. See what it adds up to by retirement, in today's money.">
-<!-- TODO: a calculator-specific OG image (1200×630). Using the programme image until then. -->
-<meta property="og:image" content="https://negotiatelikeawoman.co/assets/og-closing-the-gap-v2.jpg">
+<meta property="og:title" content="What could one pay conversation cost you?">
+<meta property="og:description" content="A pay gap that looks modest at the time compounds over a career. A free calculator: see what it adds up to by retirement, in today's money.">
+<meta property="og:image" content="https://negotiatelikeawoman.co/assets/og-calculator.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="The pay gap calculator from Negotiate Like a Woman">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="What could one conversation cost you?">
-<meta name="twitter:description" content="A gap in pay that looks modest at the time compounds over a career. See what it adds up to by retirement.">
-<meta name="twitter:image" content="https://negotiatelikeawoman.co/assets/og-closing-the-gap-v2.jpg">
+<meta name="twitter:title" content="What could one pay conversation cost you?">
+<meta name="twitter:description" content="A pay gap that looks modest at the time compounds over a career. A free calculator: see what it adds up to by retirement.">
+<meta name="twitter:image" content="https://negotiatelikeawoman.co/assets/og-calculator.jpg">
 <style>
   :root{
     --ink:#1a1f2b; --ink-soft:#4a5260; --paper:#fbf9f6; --paper-alt:#f2ede7;
@@ -127,15 +127,36 @@
   .about img{width:7rem;display:block}
   .about p{font-size:0.98rem}
   @media(max-width:520px){ .about{grid-template-columns:1fr} }
-  @media print{
-    .calc,.gate,footer,#cookiebar,.noprint{display:none!important}
-    #report{display:block;border:0;margin:0}
-  }
 
   footer{background:var(--ink);color:var(--paper-alt);padding:2.6rem 0;font-size:0.85rem;font-family:system-ui,-apple-system,sans-serif}
   footer a{color:var(--paper-alt)}
   footer p{margin:0 0 0.6rem}
   footer p:last-child{margin:0;opacity:0.75}
+  /* gap status */
+  .status{display:none;margin:-0.4rem 0 1.4rem}
+  .status.show{display:block}
+  .status .opts label{display:flex;align-items:center;gap:0.5rem;font-size:0.95rem;margin:0 0 0.5rem;cursor:pointer}
+  .status .opts input[type=radio]{accent-color:var(--accent)}
+  .status .dur{display:inline-flex;align-items:center;gap:0.5rem;margin-left:1.6rem}
+  .status .dur input{width:5rem;font-size:1.05rem;padding:0.35rem 0.5rem}
+  ol.next h4{font-size:1.08rem;font-weight:600;margin:0 0 0.5rem}
+  ol.next p{margin:0 0 0.8rem}
+  .printbtn{margin-top:0.4rem}
+  #r-assump{display:none}
+  @media print{
+    @page{margin:16mm}
+    body{font-size:11.5pt;display:block;background:#fff}
+    main{padding:0}
+    .wrap{max-width:none;padding:0}
+    h1,.lede,#pk,.calc,.gate,footer,#cookiebar,.noprint{display:none!important}
+    #report{display:block!important;border:0;margin:0;padding:0}
+    #r-assump{display:block}
+    .delay .bar,.delay .bar span{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+    .callout{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+    ol.next li,.delay,.callout{break-inside:avoid}
+    h3,h4{break-after:avoid}
+    .about{break-inside:avoid}
+  }
 </style>
 <script src="/assets/analytics.js" defer></script>
 </head>
@@ -143,9 +164,9 @@
 
 <main>
   <div class="wrap">
-    <div class="kicker">The cost of being undervalued</div>
+    <div class="kicker" id="pk">The cost of being undervalued</div>
     <h1>What could one conversation cost you?</h1>
-    <p class="lede">Think of a pay conversation, past or coming up, where you might secure more. At
+    <p class="lede">Think of a gap in your pay — one you have now, or one from years ago. At
       the time, the difference looks modest. But a lower starting point follows you: every later
       rise builds on it, and the gap compounds.</p>
 
@@ -157,7 +178,7 @@
          ====================================================== -->
     <div class="calc">
       <div class="field">
-        <label for="gap">How much might the gap be, a year?</label>
+        <label for="gap">How big is the gap, a year?</label>
         <div class="amount">
           <select id="cur" aria-label="Currency">
             <option value="GBP">£ GBP</option>
@@ -166,12 +187,12 @@
           </select>
           <input id="gap" type="number" min="0" max="500000" step="500" value="10000" inputmode="numeric">
         </div>
-        <p class="hint">In the money of the day — the number on the offer. If it was some years
-          ago, I'll adjust it for inflation.</p>
+        <p class="hint">In the money of the day — the number on the offer. If it started some
+          years ago, I'll adjust it for inflation.</p>
       </div>
       <div class="field three">
         <div>
-          <label for="yrs">How many years ago?</label>
+          <label for="yrs">How many years ago did it start?</label>
           <input id="yrs" type="number" min="0" max="40" step="1" value="0" inputmode="numeric">
           <p class="hint">Leave at zero for a gap you have now, or one coming up.</p>
         </div>
@@ -186,10 +207,24 @@
         </div>
       </div>
 
+      <!-- Shown only when the gap started in the past -->
+      <fieldset class="status sans" id="statusbox" style="border:0;padding:0">
+        <legend style="font-size:0.9rem;margin-bottom:0.6rem;padding:0">Is the gap still there?</legend>
+        <div class="opts">
+          <label><input type="radio" name="gstat" value="current" checked> Yes — I'm still
+            paid less than I should be</label>
+          <label><input type="radio" name="gstat" value="closed"> No, it closed</label>
+          <span class="dur" id="durbox" style="display:none">
+            <label for="dur" style="margin:0">after</label>
+            <input id="dur" type="number" min="1" max="40" step="1" value="3" inputmode="numeric">
+            <span>years</span>
+          </span>
+        </div>
+      </fieldset>
+
       <div class="result" aria-live="polite">
         <span class="big" id="out">—</span>
-        <p style="margin:0 0 0.6rem">what that one gap could cost you by retirement, in today's
-          money, if the extra income were invested</p>
+        <p id="outline" style="margin:0 0 0.6rem"></p>
         <p id="outnow" style="margin:0 0 1rem;color:var(--accent)"></p>
         <div class="muted">
           <ul class="assump">
@@ -206,28 +241,19 @@
       </div>
     </div>
 
-    <!-- ===================== THE GATE ===================== -->
+    <!-- ===================== SUBSCRIBE ===================== -->
     <div class="gate" id="gate">
-      <h2>That's the total. Here's what to do about it.</h2>
-      <p>Your full breakdown, built from the numbers you've just entered:</p>
-      <ul class="gets">
-        <li><strong>The cost of waiting.</strong> What closing the gap this year is worth against
-          next year, or in three — and what each year you leave it adds.</li>
-        <li><strong>What it is in a month.</strong> The gap as a figure you'll recognise from your
-          payslip.</li>
-        <li><strong>Your next three moves</strong>, for the situation you're actually in — a
-          conversation coming up, a gap where you are now, a move, or your own rates.</li>
-      </ul>
-      <p>It appears here straight away, and I'll email you a copy with a link back to it.</p>
+      <p>I run events and webinars to help women who are done being undervalued negotiate the
+        pay, influence and opportunities they deserve.</p>
+      <p id="promise"></p>
 
       <div class="signup">
-        <!-- ============ FORM WIRING — the one thing to set before launch ============
-             This form is platform-neutral. Set LEAD.action below to the form
-             endpoint of whichever email platform you use (Brevo, MailerLite…)
-             and rename the fields in LEAD.fields to match that platform.
-             Until LEAD.action is set, the breakdown still shows but nothing
-             is captured.
-             ========================================================================== -->
+        <!-- ============ FORM WIRING — set before launch ============
+             Set LEAD.action (in SETTINGS below) to your email platform's form
+             endpoint and match LEAD.fields to its field names. Until then the
+             breakdown still shows, but nothing is captured.
+             See calculator/EMAIL.md for what the platform needs.
+             ========================================================= -->
         <form id="leadform" novalidate>
           <div class="row">
             <div>
@@ -239,38 +265,35 @@
               <input type="email" id="em" autocomplete="email" required>
             </div>
           </div>
-
-          <fieldset class="choice" id="sitbox">
-            <legend>Which is closest to where you are?</legend>
-            <label><input type="radio" name="sit" value="coming" required> A pay conversation is
-              coming up — a review, an offer or a promotion</label>
-            <label><input type="radio" name="sit" value="stuck"> I'm underpaid where I am, and
-              nothing's scheduled</label>
-            <label><input type="radio" name="sit" value="moving"> I'm thinking about moving</label>
-            <label><input type="radio" name="sit" value="independent"> I work for myself — it's my
-              rates</label>
-          </fieldset>
-
-          <p class="consent">You'll get your breakdown, a short series of follow-up emails on
-            closing the gap, and invitations to my free events. Unsubscribe in one click, any
-            time. <a href="https://www.negotiationwhisperer.co/privacy_policy">Privacy notice</a>.</p>
           <p class="consent" id="formerr" style="color:var(--accent);display:none"></p>
-          <button class="btn" type="submit">Show my breakdown</button>
+          <button class="btn" type="submit">Subscribe &amp; send me my personalised breakdown</button>
+          <p class="consent" style="margin:0.8rem 0 0">(Unsubscribe at any time.)</p>
         </form>
       </div>
     </div>
     <iframe name="lead_sink" style="display:none" title="form target"></iframe>
 
-    <!-- ===================== THE REPORT ===================== -->
+    <!-- ===================== THE BREAKDOWN ===================== -->
     <div id="report" aria-live="polite">
       <div class="kicker" id="r-kicker">Your breakdown</div>
       <h2 id="r-title">—</h2>
+      <p class="muted" id="r-assump"></p>
 
-      <div class="rsec">
+      <!-- current gap -->
+      <div class="rsec cur-only">
         <h3>The cost of waiting</h3>
         <p id="r-delay-intro"></p>
         <div class="delay" id="r-delay"></div>
-        <p class="muted" id="r-delay-note"></p>
+        <p class="muted">What the gap costs you by retirement, depending on when it closes. All
+          figures in today's money.</p>
+      </div>
+
+      <!-- closed gap -->
+      <div class="rsec closed-only">
+        <h3>What it cost</h3>
+        <p id="r-closed-intro"></p>
+        <div class="delay" id="r-closed"></div>
+        <p class="muted">What the gap costs you by retirement. All figures in today's money.</p>
       </div>
 
       <div class="rsec">
@@ -278,10 +301,44 @@
         <div class="callout" id="r-month"></div>
       </div>
 
-      <div class="rsec">
-        <h3 id="r-next-title">Your next three moves</h3>
-        <ol class="next" id="r-next"></ol>
-        <div id="r-cta"></div>
+      <div class="rsec cur-only">
+        <h3>Three steps to start closing it</h3>
+        <ol class="next">
+          <li>
+            <h4>Is there a path to closing the gap where you are?</h4>
+            <p>In a challenging job market that favours employers, it can be very difficult to close
+              a significant, longstanding pay gap without a change in the scope of your role. The
+              existing arrangement has become a precedent, even if the gap is acknowledged.</p>
+            <p>A substantial shift may require a step up, an expansion of responsibilities or a
+              shift towards higher-value activities. That gives you a credible argument that your
+              value proposition to the firm has changed—and that your compensation should change
+              with it.</p>
+            <p>Is that viable where you are? Consider the firm's size, its situation and
+              priorities, the opportunities available, and your relationship with the people whose
+              support you would need. Is there room to reshape your role or move into another one
+              internally? Or are the constraints such that you need to look elsewhere?</p>
+          </li>
+          <li>
+            <h4>Where could you make a uniquely valuable contribution?</h4>
+            <p>What problem or opportunity matters to the key decision maker(s)? What evidence can
+              you present that you are uniquely well positioned to deliver it—or a key component of
+              it? What change in your role would allow you to deliver that?</p>
+            <p>A proposition or an ask that makes the boss's life easier or allows them to sleep at
+              night is far easier to say yes to.</p>
+          </li>
+          <li>
+            <h4>Whose backing would make it happen?</h4>
+            <p>Your direct line manager may not be the only person who influences your role and
+              compensation. Who do they go to for advice, and who would you want advocating for
+              you?</p>
+            <p>Once you know who those people are, repeat the same process: what matters to them?
+              How could you help them achieve it? How can you align your interests so you can help
+              each other?</p>
+            <p>Start ahead of time. The longer you put off those conversations, the more likely it
+              is that someone else's name is already in the picture—or that they have been lined up
+              for the opportunity.</p>
+          </li>
+        </ol>
       </div>
 
       <div class="rsec">
@@ -289,8 +346,10 @@
           every review, offer, promotion and change of role. Pay is only the part that's easy to
           count. The same conversations decide the authority you have, the work you're given and the
           time you keep for yourself.</p>
-        <p class="noprint"><a href="#" id="r-print">Print or save this page</a> &nbsp;·&nbsp;
-          <a href="#" id="r-edit">Change my numbers</a></p>
+        <div class="noprint">
+          <button class="btn printbtn" type="button" id="r-print">Print / save as PDF</button>
+          <p style="margin-top:1rem"><a href="#" id="r-edit">Change my numbers</a></p>
+        </div>
       </div>
 
       <div class="about">
@@ -300,6 +359,7 @@
             spent 25 years in financial services and technology, including at Barclays and Oliver
             Wyman, and was co-founder of a tech start-up. I now work with ambitious women on the
             conversations that set their pay, their influence and their opportunities.</p>
+          <p style="margin:0">negotiatelikeawoman.co</p>
         </div>
       </div>
     </div>
@@ -327,78 +387,36 @@
 var LEAD = {
   // Form endpoint of your email platform. Empty = nothing is captured yet.
   action: '',
-  // Field names your platform expects. Left: what the page sends. Right: the
-  // platform's name for it. Create matching custom fields/attributes there.
+  // Left: what the page sends. Right: the platform's field name. Create a
+  // matching custom field / attribute for each in the platform.
+  // The email is built from these — see calculator/EMAIL.md.
   fields: {
-    firstName:  'FIRSTNAME',
-    email:      'EMAIL',
-    situation:  'CALC_SITUATION',   // coming | stuck | moving | independent
-    currency:   'CALC_CURRENCY',
-    gap:        'CALC_GAP',
-    yearsAgo:   'CALC_YEARS_AGO',
-    age:        'CALC_AGE',
-    retireAt:   'CALC_RETIRE_AT',
-    total:      'CALC_TOTAL',       // the headline figure, formatted, e.g. "£480,000"
-    reportUrl:  'CALC_REPORT_URL'   // personal link back to the breakdown — use in the email
+    firstName:   'FIRSTNAME',
+    email:       'EMAIL',
+    signupDate:  'SIGNUP_DATE',        // YYYY-MM-DD
+    consentText: 'CONSENT_TEXT',       // the exact wording shown at signup
+    status:      'CALC_STATUS',        // current | closed
+    total:       'CALC_TOTAL',         // e.g. "£510,000"
+    lost:        'CALC_LOST_INCOME',
+    growth:      'CALC_GROWTH',
+    perYear:     'CALC_GAP_YEAR',      // the gap a year, in today's money
+    perMonth:    'CALC_GAP_MONTH',
+    retireAt:    'CALC_RETIRE_AT',
+    waitNow:     'CALC_WAIT_NOW',      // current gap only: cost if closed now
+    wait1:       'CALC_WAIT_1Y',       //   … in a year
+    wait3:       'CALC_WAIT_3Y',       //   … in three years
+    oneYear:     'CALC_ONE_YEAR_DELAY',
+    summary:     'CALC_SUMMARY'        // the whole breakdown as plain text
   },
-  // Anything else the platform needs posted as-is (e.g. Brevo's honeypot and locale).
+  // Anything else the platform needs posted as-is (e.g. Brevo's locale fields).
   extra: {}
-};
-
-/* The "next step" at the end of each situation. Point these wherever the
-   current offer lives — the January webinar, the course, an SOS session. */
-var CTA = {
-  event: { href:'/events/', label:'See the next free event',
-    text:'My free sessions work through this in more depth, with time for questions.' },
-  sos:   { href:'https://121.negotiationwhisperer.co/', label:'Book an SOS session',
-    text:'If the conversation is a few weeks away, a one-off SOS session works through your case with you, start to finish.' }
-};
-
-/* Next moves by situation. Draft copy — for Drafter and Reviewer. */
-var NEXT = {
-  coming: {
-    title: 'With a conversation coming up',
-    steps: [
-      'Treat the figure above as the stake, not the ask. It tells you how much this one conversation is worth getting right — which is a reason to prepare properly, and to settle on your number before anyone else names one.',
-      'Build your case around their priorities. What is the organisation trying to fix or win, and where does your work move it? An ask framed in those terms is far harder to wave away than a list of achievements.',
-      'Decide now what you\'ll do if the answer is "not now". A deferral with no date and no criteria attached is usually a no. Know what you\'d ask for instead — a date, a review point, a change in scope — before you walk in.'
-    ],
-    ctas: ['sos','event']
-  },
-  stuck: {
-    title: 'With a gap where you are now',
-    steps: [
-      'Assume the gap won\'t close by itself. An employer has little reason to correct long-standing undervaluation because you make the case again, and the annual review — budgets set, conversation about percentages — is usually the hardest place to do it.',
-      'Find the opening. Look for a problem or opportunity the organisation genuinely cares about, where you are particularly well placed to create value.',
-      'Change the basis of the conversation. A step change in pay usually comes with a changed role: a different remit, more authority, more commercial weight. That doesn\'t have to mean more work. It means negotiating for a share of the value you create.'
-    ],
-    ctas: ['event']
-  },
-  moving: {
-    title: 'If you\'re thinking about moving',
-    steps: [
-      'The offer is where the gap gets set. Whatever you start on becomes the base every later rise builds on — which is exactly what the figure above is measuring.',
-      'Where you can, get them to name the range before you name a number. They know the budget; you\'re being asked to guess it.',
-      'Negotiate the role as well as the salary. Title, scope, reporting line and the date of your first review are often easier to move than base pay, and they shape the next negotiation.'
-    ],
-    ctas: ['event','sos']
-  },
-  independent: {
-    title: 'If it\'s your rates',
-    steps: [
-      'The same arithmetic applies. A rate set low becomes the anchor for every renewal and every referral that follows, so the first quote to a client matters more than it feels.',
-      'Price the outcome for the client, not your hours. What does the problem cost them, and what is solving it worth?',
-      'Raise rates at natural moments — a new client, a change in scope, a renewal — when a new number needs no apology.'
-    ],
-    ctas: ['event']
-  }
 };
 </script>
 
 <script>
 (function(){
   var $ = function(id){ return document.getElementById(id); };
-  var gap=$('gap'), yrs=$('yrs'), age=$('age'), ret=$('ret'), cur=$('cur');
+  var gap=$('gap'), yrs=$('yrs'), age=$('age'), ret=$('ret'), cur=$('cur'), dur=$('dur');
 
   var PAY = 0.015;   // gap grows this much above inflation
   var RET = 0.03;    // investment return above inflation
@@ -449,10 +467,15 @@ var NEXT = {
     var step = n >= 100000 ? 10000 : (n >= 20000 ? 5000 : (n >= 2000 ? 1000 : 50));
     return sym + (Math.round(n/step)*step).toLocaleString('en-GB');
   }
+  function closedChosen(){
+    var r = document.querySelector('input[name=gstat]:checked');
+    return (parseInt(yrs.value, 10) || 0) > 0 && r && r.value === 'closed';
+  }
 
-  /* One model, used by the free result and the breakdown.
-     Year t of the shortfall (t = 0 is the year it started) is ar·(1+PAY)^t,
-     treated as arriving at the end of the year and invested to retirement. */
+  /* One model for the free result and the breakdown.
+     Year t of the gap (t = 0 is the year it started) is ar·(1+PAY)^t, treated as
+     arriving at the end of the year and invested until retirement.
+     A current gap runs to retirement unless closed; a closed gap ran for `lasted` years. */
   function model(){
     var a  = Math.min(Math.max(parseFloat(gap.value) || 0, 0), 500000);
     var ya = Math.min(Math.max(parseInt(yrs.value, 10) || 0, 0), 40);
@@ -460,84 +483,97 @@ var NEXT = {
     if (a <= 0 || !ag || !rt) return null;
     var ahead = Math.min(Math.max(rt - ag, 0), 50), total = ya + ahead;
     if (total < 1) return null;
+    var closed = closedChosen();
+    var lasted = closed ? Math.min(Math.max(parseInt(dur.value, 10) || 1, 1), ya) : total;
     var ar = inTodaysMoney(a, ya), yearVal = [], lost = 0, atRet = 0;
     for (var t = 0; t < total; t++){
       var yr = ar * Math.pow(1 + PAY, t), v = yr * Math.pow(1 + RET, total - 1 - t);
-      yearVal.push(v); lost += yr; atRet += v;
+      yearVal.push(v);
+      if (t < lasted){ lost += yr; atRet += v; }
     }
-    // cost if the gap closes k years from now: past years plus k more
-    function costIfClosedIn(k){
+    function costIfClosedIn(k){   // current gap only
       var s = 0, n = Math.min(ya + k, total);
       for (var i = 0; i < n; i++) s += yearVal[i];
       return s;
     }
-    return { a:a, ya:ya, ag:ag, rt:rt, ahead:ahead, total:total, ar:ar,
+    return { a:a, ya:ya, ag:ag, rt:rt, ahead:ahead, total:total, ar:ar, closed:closed, lasted:lasted,
              lost:lost, atRet:atRet, growth:atRet - lost, costIfClosedIn:costIfClosedIn };
   }
+
+  var PROMISE = {
+    current: 'Subscribe to stay in the loop about what’s coming up. And to get you started, I’ll send you a free breakdown of your pay gap and the cost of waiting to close it, together with three key steps to start addressing it—straight to your inbox.',
+    closed:  'Subscribe to stay in the loop about what’s coming up. And to get you started, I’ll send you a free breakdown of what that gap has cost you—the income it took while it lasted, and the growth that money would still be earning by retirement—straight to your inbox.'
+  };
 
   function update(){
     var s = series();
     $('rethint').textContent = s.note;
     $('rethint').style.display = s.note ? '' : 'none';
+    var past = (parseInt(yrs.value, 10) || 0) > 0;
+    $('statusbox').classList.toggle('show', past);
+    $('durbox').style.display = closedChosen() ? 'inline-flex' : 'none';
     var m = model();
-    if (!m){ $('out').textContent = '—'; $('outnow').textContent = ''; return; }
+    $('promise').textContent = PROMISE[m && m.closed ? 'closed' : 'current'];
+    if (!m){ $('out').textContent = '—'; $('outnow').textContent = ''; $('outline').textContent = ''; return; }
     $('out').textContent = round(m.atRet);
+    $('outline').textContent = m.closed
+      ? 'what that gap has cost you by retirement, in today’s money, counting the growth the extra income would have earned if invested'
+      : 'what that one gap could cost you by retirement, in today’s money, if the extra income were invested';
     $('outnow').textContent = 'Of which lost income ' + round(m.lost) + ', investment growth ' + round(m.growth) + '.';
     if (unlocked) renderReport();
   }
 
   /* ---------- the breakdown ---------- */
-  var unlocked = false, situation = null;
+  var unlocked = false;
+
+  function bars(el, rows, max){
+    el.innerHTML = rows.map(function(r, i){
+      var pct = max ? Math.max(r.v / max * 100, r.v > 0 ? 1 : 0) : 0;
+      return '<div class="r' + (i === 0 ? ' now' : '') + '"><span>' + r.label + '</span>' +
+        '<div class="bar"><span style="width:' + pct.toFixed(1) + '%"></span></div>' +
+        '<span class="amt">' + (r.v > 0 ? round(r.v) : series().sym + '0') + '</span></div>';
+    }).join('');
+  }
+  function waitRows(m){
+    var rows = [];
+    [0,1,3].filter(function(k){ return k < m.ahead; }).forEach(function(k){
+      rows.push({ k:k, label: k === 0 ? (m.ya > 0 ? 'Closed this year' : 'Closed now') : (k === 1 ? 'In a year' : 'In ' + k + ' years'),
+                  v: m.costIfClosedIn(k) });
+    });
+    rows.push({ k:null, label:'Never', v:m.atRet });
+    return rows;
+  }
 
   function renderReport(){
     var m = model(); if (!m) return;
-    var sym = series().sym, name = ($('fn').value || '').trim();
+    var name = ($('fn').value || '').trim();
+    document.querySelectorAll('.cur-only').forEach(function(e){ e.style.display = m.closed ? 'none' : ''; });
+    document.querySelectorAll('.closed-only').forEach(function(e){ e.style.display = m.closed ? '' : 'none'; });
     $('r-kicker').textContent = name ? 'Your breakdown, ' + name : 'Your breakdown';
-    $('r-title').textContent = 'A gap of ' + round(m.ar) + ' a year adds up to ' + round(m.atRet) + ' by the time you\'re ' + m.rt + '.';
+    $('r-assump').textContent = 'Gap entered: ' + series().sym + Number(gap.value).toLocaleString('en-GB') + ' a year' +
+      (m.ya ? ', starting ' + m.ya + (m.ya === 1 ? ' year' : ' years') + ' ago' : '') +
+      (m.closed ? ', closed after ' + m.lasted + (m.lasted === 1 ? ' year' : ' years') : '') +
+      '. Age ' + m.ag + ', retiring at ' + m.rt + '. In today’s money; gap grows 1.5% a year above inflation; invested at 3% above inflation; before tax. Illustrative only, not financial advice.';
 
-    // cost of waiting
-    var rows = [], max = m.atRet, stop = [0,1,3];
-    var label0 = m.ya > 0 ? 'Closed this year' : 'Closed now';
-    stop = stop.filter(function(k){ return k < m.ahead; });
-    var rowsHtml = '';
-    stop.forEach(function(k){
-      var c = m.costIfClosedIn(k);
-      rows.push({ label: k === 0 ? label0 : (k === 1 ? 'In a year' : 'In ' + k + ' years'), v:c });
-    });
-    rows.push({ label:'Never', v:m.atRet });
-    rows.forEach(function(r, i){
-      var pct = max ? Math.max(r.v / max * 100, r.v > 0 ? 1 : 0) : 0;
-      rowsHtml += '<div class="r' + (i === 0 ? ' now' : '') + '"><span>' + r.label + '</span>' +
-        '<div class="bar"><span style="width:' + pct.toFixed(1) + '%"></span></div>' +
-        '<span class="amt">' + (r.v > 0 ? round(r.v) : sym + '0') + '</span></div>';
-    });
-    $('r-delay').innerHTML = rowsHtml;
-
-    var oneYear = m.costIfClosedIn(1) - m.costIfClosedIn(0);
-    var intro = m.ya > 0
-      ? 'You can\'t change the ' + m.ya + (m.ya === 1 ? ' year' : ' years') + ' already gone — that part is ' + round(m.costIfClosedIn(0)) + ' by retirement. The rest is still open. '
-      : 'None of it is spent yet. ';
-    intro += 'Leaving it one more year costs about <strong>' + round(oneYear) + '</strong> by retirement, and the cost of each year of delay is highest now, because that money has longest to grow.';
-    $('r-delay-intro').innerHTML = intro;
-    $('r-delay-note').textContent = 'What the gap costs you by retirement, depending on when it closes. Same assumptions as above; all figures in today\'s money.';
-
-    // a month
-    var month = m.ar / 12;
-    $('r-month').innerHTML = round(m.ar) + ' a year is about <strong>' + round(month) + ' a month</strong> before tax' +
-      (m.ya > 0 ? ' in today\'s money' : '') + '. Over the ' + m.ahead + ' working years you have left, at the same growth, that\'s ' +
-      round(lostAhead(m)) + ' of income — before any of it is invested.';
-
-    // next moves
-    var n = NEXT[situation] || NEXT.stuck;
-    $('r-next-title').textContent = 'Your next three moves — ' + n.title.charAt(0).toLowerCase() + n.title.slice(1);
-    $('r-next').innerHTML = n.steps.map(function(s){ return '<li>' + s + '</li>'; }).join('');
-    var c = '';
-    n.ctas.forEach(function(key, i){
-      var x = CTA[key];
-      c += '<p style="margin:' + (i ? '1.6rem' : '0') + ' 0 0.8rem">' + x.text + '</p>' +
-           '<a class="btn' + (i ? ' ghost' : '') + '" href="' + x.href + '">' + x.label + '</a>';
-    });
-    $('r-cta').innerHTML = c;
+    if (m.closed){
+      $('r-title').textContent = 'A gap of ' + round(m.ar) + ' a year in today\u2019s money, for ' + m.lasted + (m.lasted === 1 ? ' year' : ' years') +
+        ', costs you ' + round(m.atRet) + ' by the time you’re ' + m.rt + '.';
+      $('r-closed-intro').textContent = 'Because the gap has closed, no further losses are building up. What it took can’t be reversed by a correction now: the income is gone, and so is the growth it would have earned. Most of the total is that growth, which is why a gap early in a career costs more than the same gap later.';
+      bars($('r-closed'), [ { label:'Income lost', v:m.lost }, { label:'Growth by retirement', v:m.growth }, { label:'Total', v:m.atRet } ], m.atRet);
+      $('r-month').innerHTML = 'While it lasted, ' + round(m.ar) + ' a year was about <strong>' + round(m.ar/12) + ' a month</strong> before tax, in today’s money.';
+    } else {
+      $('r-title').textContent = 'A gap of ' + round(m.ar) + ' a year' + (m.ya ? ' in today\u2019s money' : '') + ' adds up to ' + round(m.atRet) + ' by the time you’re ' + m.rt + '.';
+      var oneYear = m.costIfClosedIn(1) - m.costIfClosedIn(0);
+      var intro = m.ya > 0
+        ? 'The ' + m.ya + (m.ya === 1 ? ' year' : ' years') + ' already gone can’t be undone — that part comes to ' + round(m.costIfClosedIn(0)) + ' by retirement. The rest is still open. '
+        : 'None of it is spent yet. ';
+      intro += 'Leaving it one more year costs about <strong>' + round(oneYear) + '</strong> by retirement, and each year of delay costs most now, because that money has longest to grow.';
+      $('r-delay-intro').innerHTML = intro;
+      bars($('r-delay'), waitRows(m), m.atRet);
+      $('r-month').innerHTML = round(m.ar) + ' a year is about <strong>' + round(m.ar/12) + ' a month</strong> before tax' +
+        (m.ya > 0 ? ' in today’s money' : '') + '. Over the ' + m.ahead + ' working years you have left, at the same growth, that’s ' +
+        round(lostAhead(m)) + ' of income — before any of it is invested.';
+    }
   }
   function lostAhead(m){
     var s = 0;
@@ -545,10 +581,18 @@ var NEXT = {
     return s;
   }
 
-  function reportUrl(){
-    var q = new URLSearchParams({ c:cur.value, g:gap.value, y:yrs.value, a:age.value, r:ret.value, s:situation || '' });
-    var name = ($('fn').value || '').trim(); if (name) q.set('n', name);
-    return 'https://negotiatelikeawoman.co/calculator/?' + q.toString() + '#report';
+  /* Plain-text version of the breakdown, sent to the email platform so the
+     email can carry the figures without putting them in any URL. */
+  function summary(m){
+    var L = [];
+    L.push(($('r-title').textContent));
+    L.push('Lost income ' + round(m.lost) + '; investment growth ' + round(m.growth) + '.');
+    if (!m.closed){
+      waitRows(m).forEach(function(r){ L.push(r.label + ': ' + round(r.v)); });
+    }
+    L.push($('r-month').textContent);
+    L.push($('r-assump').textContent);
+    return L.join('\n');
   }
 
   function unlock(scroll){
@@ -567,7 +611,6 @@ var NEXT = {
     function add(k, v){ var i = document.createElement('input'); i.type = 'hidden'; i.name = k; i.value = v; f.appendChild(i); }
     Object.keys(data).forEach(function(k){ if (LEAD.fields[k]) add(LEAD.fields[k], data[k]); });
     Object.keys(LEAD.extra).forEach(function(k){ add(k, LEAD.extra[k]); });
-    // attribution captured by analytics.js
     var at = window.__attrib || {};
     ['utm_source','utm_medium','utm_campaign','utm_content','utm_term'].forEach(function(k){ if (at[k]) add(k.toUpperCase(), at[k]); });
     document.body.appendChild(f); f.submit();
@@ -576,42 +619,36 @@ var NEXT = {
   $('leadform').addEventListener('submit', function(e){
     e.preventDefault();
     var err = $('formerr'), em = $('em').value.trim(), fn = $('fn').value.trim();
-    var s = document.querySelector('input[name=sit]:checked');
     var msg = !fn ? 'Please add your first name.' :
               !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em) ? 'Please check your email address.' :
-              !s ? 'Please pick the situation closest to yours.' :
               !model() ? 'Please complete the calculator first.' : '';
     if (msg){ err.textContent = msg; err.style.display = 'block'; return; }
     err.style.display = 'none';
-    situation = s.value;
     var m = model();
-    post({ firstName:fn, email:em, situation:situation, currency:cur.value, gap:gap.value,
-           yearsAgo:yrs.value, age:age.value, retireAt:ret.value, total:round(m.atRet), reportUrl:reportUrl() });
+    unlock(true);   // render first, so the summary can reuse the rendered text
+    var w = m.closed ? {} : { waitNow:round(m.costIfClosedIn(0)), wait1:round(m.costIfClosedIn(1)),
+      wait3:round(m.costIfClosedIn(3)), oneYear:round(m.costIfClosedIn(1) - m.costIfClosedIn(0)) };
+    var gateText = [ $('gate').querySelector('p').textContent, $('promise').textContent,
+      '[' + $('leadform').querySelector('button').textContent + ']', '(Unsubscribe at any time.)' ]
+      .join(' ').replace(/\s+/g, ' ').trim();
+    post(Object.assign({
+      firstName:fn, email:em, signupDate:new Date().toISOString().slice(0,10),
+      consentText: gateText.slice(0, 1000),
+      status: m.closed ? 'closed' : 'current', total:round(m.atRet), lost:round(m.lost), growth:round(m.growth),
+      perYear:round(m.ar), perMonth:round(m.ar/12), retireAt:String(m.rt), summary:summary(m)
+    }, w));
     if (typeof gtag === 'function') gtag('event', 'generate_lead', {
-      lead_source:'calculator', situation:situation, source:(window.__attrib && window.__attrib.utm_source) || 'direct' });
-    unlock(true);
+      lead_source:'calculator', gap_status: m.closed ? 'closed' : 'current',
+      source:(window.__attrib && window.__attrib.utm_source) || 'direct' });
   });
 
-  /* ---------- arriving from the email link ---------- */
-  (function(){
-    var q = new URLSearchParams(location.search);
-    if (!q.has('g')) return;
-    if (SERIES[q.get('c')]) cur.value = q.get('c');
-    gap.value = q.get('g'); yrs.value = q.get('y') || 0;
-    if (q.get('a')) age.value = q.get('a');
-    if (q.get('r')) ret.value = q.get('r');
-    if (q.get('n')) $('fn').value = q.get('n');
-    if (NEXT[q.get('s')]) situation = q.get('s');
-    update();
-    if (situation) unlock(false);
-  })();
-
-  $('r-print').addEventListener('click', function(e){ e.preventDefault(); window.print(); });
+  $('r-print').addEventListener('click', function(){ window.print(); });
   $('r-edit').addEventListener('click', function(e){ e.preventDefault(); gap.focus(); gap.scrollIntoView({ behavior:'smooth', block:'center' }); });
 
-  [gap, yrs, age, ret, cur].forEach(function(el){
+  [gap, yrs, age, ret, cur, dur].forEach(function(el){
     el.addEventListener('input', update); el.addEventListener('change', update);
   });
+  document.querySelectorAll('input[name=gstat]').forEach(function(el){ el.addEventListener('change', update); });
   update();
 
   // GA4: same events as the programme page
