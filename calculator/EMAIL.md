@@ -64,7 +64,7 @@ for good:
 And the longer a gap stays in place, the more it becomes the accepted arrangement,
 and the harder it is to shift.
 
-**In a month,** that gap is about {{ contact.CALC_GAP_MONTH }} before tax.
+**In a month,** that gap is about {{ contact.CALC_GAP_MONTH }} — all of it, if it goes into your pension.
 
 **Three steps to start closing it**
 
@@ -107,7 +107,7 @@ is that someone else's name is already in the picture—or that they have been l
 up for the opportunity.
 
 All figures are in today's money: the gap grows 1.5% a year above inflation and is
-invested at 3% above inflation, before tax. Illustrative only, not financial advice.
+paid into a pension, earning 3% above inflation. Illustrative only, not financial advice.
 
 What's the biggest obstacle to changing your pay? Reply and tell me.
 

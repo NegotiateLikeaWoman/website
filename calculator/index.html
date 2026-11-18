@@ -212,8 +212,8 @@
               pay now.</li>
             <li><strong>The gap grows 1.5% a year above inflation</strong>, tracking senior pay
               progression.</li>
-            <li><strong>All of it is invested</strong>, earning 3% a year above inflation. Before
-              tax.</li>
+            <li><strong>All of it goes into your pension</strong>, earning 3% a year above
+              inflation. Paid in that way, the gap counts in full, before tax.</li>
           </ul>
           <p style="margin:0.5rem 0 0">Illustrative only, and not financial advice.</p>
         </div>
@@ -427,7 +427,7 @@ var LEAD = {
     var m = model();
     if (!m){ $('out').textContent = '—'; $('outnow').textContent = ''; $('outline').textContent = ''; return; }
     $('out').textContent = round(m.total);
-    $('outline').textContent = 'what that gap could cost you by retirement, in today’s money, if the extra income were invested';
+    $('outline').textContent = 'what that gap could cost you by retirement, in today’s money, if the extra income went into your pension';
     $('outnow').textContent = 'Of which lost income ' + round(m.lost) + ', investment growth ' + round(m.growth) + '.';
     if (unlocked) renderReport();
   }
@@ -452,7 +452,7 @@ var LEAD = {
     $('r-kicker').textContent = name ? 'Your breakdown, ' + name : 'Your breakdown';
     $('r-title').textContent = 'A gap of ' + round(m.g) + ' a year adds up to ' + round(m.total) + ' by the time you’re ' + m.rt + '.';
     $('r-assump').textContent = 'Gap entered: ' + sym() + Number(gap.value).toLocaleString('en-GB') + ' a year. Age ' + m.ag +
-      ', retiring at ' + m.rt + '. In today’s money; gap grows 1.5% a year above inflation; invested at 3% above inflation; before tax. Illustrative only, not financial advice.';
+      ', retiring at ' + m.rt + '. In today’s money; gap grows 1.5% a year above inflation; paid into a pension, earning 3% above inflation. Illustrative only, not financial advice.';
 
     var intro = 'Close the gap today and the full ' + round(m.total) + ' is still yours to win back by retirement. Every year it stays open, part of it is gone for good';
     var w = WAITS.filter(function(k){ return k < m.years; });
@@ -468,8 +468,8 @@ var LEAD = {
         '<span class="amt">' + (r.v > 0 ? round(r.v) + ' lost' : 'nothing lost') + '</span></div>';
     }).join('');
 
-    $('r-month').innerHTML = round(m.g) + ' a year is about <strong>' + round(m.g/12) + ' a month</strong> before tax. Over the ' +
-      m.years + ' working years you have left, at the same growth, that’s ' + round(m.lost) + ' of income — before any of it is invested.';
+    $('r-month').innerHTML = round(m.g) + ' a year is about <strong>' + round(m.g/12) + ' a month</strong> \u2014 all of it, if it goes into your pension. Over the ' +
+      m.years + ' working years you have left, at the same growth, that’s ' + round(m.lost) + ' of income — before any of it grows.';
   }
 
   function summary(m){
