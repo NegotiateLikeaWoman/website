@@ -94,6 +94,7 @@
     font-family:system-ui,-apple-system,sans-serif;font-size:0.95rem;cursor:pointer;line-height:1.4
   }
   fieldset.choice input{accent-color:var(--accent);margin-top:0.2rem}
+  fieldset.choice label{display:inline-flex;margin-right:1.4rem}
   .consent{font-family:system-ui,-apple-system,sans-serif;font-size:0.85rem;color:var(--ink-soft);line-height:1.5;margin:0.2rem 0 1.2rem}
   .btn{
     display:inline-block;background:var(--accent);color:#fff;text-decoration:none;border:0;cursor:pointer;
@@ -244,6 +245,12 @@
               <input type="email" id="em" autocomplete="email" required>
             </div>
           </div>
+          <fieldset class="choice">
+            <legend>Would you like to hear about in-person events in London, including the
+              Negotiation Supper Club?</legend>
+            <label><input type="radio" name="london" value="1"> Yes, those too</label>
+            <label><input type="radio" name="london" value="2"> No — I'm not near London</label>
+          </fieldset>
           <p class="consent" id="formerr" style="color:var(--accent);display:none"></p>
           <button class="btn" type="submit">Subscribe &amp; send me my personalised breakdown</button>
           <p class="consent" style="margin:0.8rem 0 0">(Unsubscribe at any time.)</p>
@@ -365,6 +372,7 @@ var LEAD = {
     growth:      'CALC_GROWTH',
     perYear:     'CALC_GAP_YEAR',
     perMonth:    'CALC_GAP_MONTH',
+    london:      'LONDON_EVENTS',      // 1 = yes, 2 = no
     retireAt:    'CALC_RETIRE_AT',
     lost1:       'CALC_LOST_1Y',       // never won back if it closes in a year
     lost5:       'CALC_LOST_5Y',       //   … in five years
@@ -501,6 +509,7 @@ var LEAD = {
     var err = $('formerr'), em = $('em').value.trim(), fn = $('fn').value.trim();
     var msg = !fn ? 'Please add your first name.' :
               !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em) ? 'Please check your email address.' :
+              !document.querySelector('input[name=london]:checked') ? 'Please say whether you\u2019d like London events.' :
               !model() ? 'Please complete the calculator first.' : '';
     if (msg){ err.textContent = msg; err.style.display = 'block'; return; }
     err.style.display = 'none';
@@ -509,7 +518,7 @@ var LEAD = {
       '[' + $('leadform').querySelector('button').textContent + ']', '(Unsubscribe at any time.)' ]
       .join(' ').replace(/\s+/g, ' ').trim();
     unlock(true);
-    post({ firstName:fn, email:em, signupDate:new Date().toISOString().slice(0,10), consentText:consent,
+    post({ firstName:fn, email:em, london:document.querySelector('input[name=london]:checked').value, signupDate:new Date().toISOString().slice(0,10), consentText:consent,
       total:round(m.total), lost:round(m.lost), growth:round(m.growth), perYear:round(m.g), perMonth:round(m.g/12),
       retireAt:String(m.rt), lost1:round(m.lostIfWait(1)), lost5:round(m.lostIfWait(5)), summary:summary(m) });
     if (typeof gtag === 'function') gtag('event', 'generate_lead', {
