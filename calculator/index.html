@@ -358,9 +358,20 @@
 /* =====================================================================
    SETTINGS — edit here
    ===================================================================== */
+/* Consent record. Brevo form fields hold 200 characters at most, so each signup
+   stores this version code; the wording it stands for is kept here. Change the
+   code whenever the subscribe wording changes.
+   calculator-v1 (19 Nov 2026): "I run events and webinars to help women who are done
+   being undervalued negotiate the pay, influence and opportunities they deserve.
+   Subscribe to stay in the loop about what's coming up. And to get you started, I'll
+   send you a free breakdown of your pay gap and the cost of waiting to close it,
+   together with three key steps to start addressing it—straight to your inbox.
+   [Subscribe & send me my personalised breakdown] (Unsubscribe at any time.)" */
+var CONSENT_VERSION = 'calculator-v1';
+
 var LEAD = {
   // Form endpoint of your email platform. Empty = nothing is captured yet.
-  action: '',
+  action: 'https://fc846cc2.sibforms.com/serve/MUIFAAB1QLOfdJRikj-tEMfek-rLQ_bWGIJGDcXg5IjZeKVV6E1u4U0WImBbUaQ-evWNl-iHGMyYsMmhvHdMDsU6VPjh4NRWeYrsl5dDCPpX-pQhRxH536GwJcdwjKfQe4_MEhGdU4Qsn_HT47NEMAZllxnEVhflBbN7HZp3RwvHGaxK_46jC4cAbGhCKefDE1dCncvWQ8j2noxDPQ==',  // Brevo form "Calculator signup"
   // Left: what the page sends. Right: the platform's field name. Create a
   // matching custom field / attribute for each in the platform.
   // The email is built from these — see calculator/EMAIL.md.
@@ -368,7 +379,7 @@ var LEAD = {
     firstName:   'FIRSTNAME',
     email:       'EMAIL',
     signupDate:  'SIGNUP_DATE',        // YYYY-MM-DD
-    consentText: 'CONSENT_TEXT',       // the exact wording shown at signup
+    consentText: 'CONSENT_TEXT',       // version of the wording shown — see CONSENT_VERSION
     total:       'CALC_TOTAL',         // e.g. "£510,000" — what closing it today wins back
     lost:        'CALC_LOST_INCOME',
     growth:      'CALC_GROWTH',
@@ -377,11 +388,10 @@ var LEAD = {
     london:      'LONDON_EVENTS',      // 1 = yes, 2 = no
     retireAt:    'CALC_RETIRE_AT',
     lost1:       'CALC_LOST_1Y',       // never won back if it closes in a year
-    lost5:       'CALC_LOST_5Y',       //   … in five years
-    summary:     'CALC_SUMMARY'        // the whole breakdown as plain text
+    lost5:       'CALC_LOST_5Y'        //   … in five years
   },
   // Anything else the platform needs posted as-is (e.g. Brevo's locale fields).
-  extra: {}
+  extra: { email_address_check:'', locale:'en' }
 };
 </script>
 
@@ -516,13 +526,11 @@ var LEAD = {
     if (msg){ err.textContent = msg; err.style.display = 'block'; return; }
     err.style.display = 'none';
     var m = model();
-    var consent = [ $('gate').querySelector('p').textContent, $('promise').textContent,
-      '[' + $('leadform').querySelector('button').textContent + ']', '(Unsubscribe at any time.)' ]
-      .join(' ').replace(/\s+/g, ' ').trim();
+    var consent = CONSENT_VERSION;
     unlock(true);
     post({ firstName:fn, email:em, london:document.querySelector('input[name=london]:checked').value, signupDate:new Date().toISOString().slice(0,10), consentText:consent,
       total:round(m.total), lost:round(m.lost), growth:round(m.growth), perYear:round(m.g), perMonth:round(m.g/12),
-      retireAt:String(m.rt), lost1:round(m.lostIfWait(1)), lost5:round(m.lostIfWait(5)), summary:summary(m) });
+      retireAt:String(m.rt), lost1:round(m.lostIfWait(1)), lost5:round(m.lostIfWait(5)) });
     if (typeof gtag === 'function') gtag('event', 'generate_lead', {
       lead_source:'calculator', source:(window.__attrib && window.__attrib.utm_source) || 'direct' });
   });
