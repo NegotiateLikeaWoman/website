@@ -109,7 +109,7 @@ paid into a pension, earning 3% above inflation. Illustrative only, not financia
 
 What's the biggest obstacle to changing your pay? Reply and tell me.
 
-P.S. Prefer event dates on WhatsApp? [Join my events group](https://chat.whatsapp.com/H8DQEk7hxaNGANNhFakH51).
+P.S. Like to receive event details on WhatsApp too? [Join my events group](https://chat.whatsapp.com/H8DQEk7hxaNGANNhFakH51).
 It's one-way, announcements only: typically two or three messages a month.
 
 [standard signature, with the Substack line]
