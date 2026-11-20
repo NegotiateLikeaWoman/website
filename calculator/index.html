@@ -251,7 +251,7 @@
             <label><input type="radio" name="london" value="2"> No — I'm not near London</label>
           </fieldset>
           <p class="consent" id="formerr" style="color:var(--accent);display:none"></p>
-          <button class="btn" type="submit">Subscribe &amp; send me my personalised breakdown</button>
+          <button class="btn" type="submit">Subscribe &amp; show me how to close my gap</button>
           <p class="consent" style="margin:0.8rem 0 0">(Unsubscribe at any time.)</p>
         </form>
       </div>
@@ -260,7 +260,7 @@
 
     <!-- ===================== THE BREAKDOWN ===================== -->
     <div id="report" aria-live="polite">
-      <div class="kicker" id="r-kicker">Your breakdown</div>
+      <div class="kicker" id="r-kicker">How to start closing your gap</div>
       <h2 id="r-title">—</h2>
       <p class="muted" id="r-assump"></p>
       <p class="callout noprint" style="font-size:0.98rem">Like to receive event details on WhatsApp too?
@@ -357,8 +357,12 @@
    Subscribe to stay in the loop about what's coming up. And to get you started, I'll
    send you a free breakdown of your pay gap and the cost of waiting to close it,
    together with three key steps to start addressing it—straight to your inbox.
-   [Subscribe & send me my personalised breakdown] (Unsubscribe at any time.)" */
-var CONSENT_VERSION = 'calculator-v1';
+   [Subscribe & send me my personalised breakdown] (Unsubscribe at any time.)"
+   calculator-v2 (20 Nov 2026): first paragraph unchanged; then "Subscribe to stay in the
+   loop about what's coming up. And to get you started, I'll send you three practical
+   steps to start closing your pay gap, along with what waiting would cost you, straight
+   to your inbox. [Subscribe & show me how to close my gap] (Unsubscribe at any time.)" */
+var CONSENT_VERSION = 'calculator-v2';
 
 var LEAD = {
   // Form endpoint of your email platform. Empty = nothing is captured yet.
@@ -438,7 +442,7 @@ var LEAD = {
     if (unlocked) renderReport();
   }
 
-  $('promise').textContent = 'Subscribe to stay in the loop about what’s coming up. And to get you started, I’ll send you a free breakdown of your pay gap and the cost of waiting to close it, together with three key steps to start addressing it—straight to your inbox.';
+  $('promise').textContent = 'Subscribe to stay in the loop about what’s coming up. And to get you started, I’ll send you three practical steps to start closing your pay gap, along with what waiting would cost you, straight to your inbox.';
 
   /* ---------- the breakdown ---------- */
   var unlocked = false;
@@ -455,7 +459,7 @@ var LEAD = {
   function renderReport(){
     var m = model(); if (!m) return;
     var name = ($('fn').value || '').trim();
-    $('r-kicker').textContent = name ? 'Your breakdown, ' + name : 'Your breakdown';
+    $('r-kicker').textContent = 'How to start closing your gap';
     $('r-title').textContent = 'A gap of ' + round(m.g) + ' a year adds up to ' + round(m.total) + ' by the time you’re ' + m.rt + ', assuming it goes into your pension.';
     $('r-assump').textContent = 'Gap entered: ' + sym() + Number(gap.value).toLocaleString('en-GB') + ' a year. Age ' + m.ag +
       ', retiring at ' + m.rt + '. In today’s money; gap grows 1.5% a year above inflation; paid into a pension, earning 3% above inflation. Illustrative only, not financial advice.';
