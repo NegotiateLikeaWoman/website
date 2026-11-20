@@ -460,7 +460,7 @@ var LEAD = {
     $('r-assump').textContent = 'Gap entered: ' + sym() + Number(gap.value).toLocaleString('en-GB') + ' a year. Age ' + m.ag +
       ', retiring at ' + m.rt + '. In today’s money; gap grows 1.5% a year above inflation; paid into a pension, earning 3% above inflation. Illustrative only, not financial advice.';
 
-    var intro = 'Close the gap today and the full ' + round(m.total) + ' is still yours to win back by retirement. Every year it stays open, part of it is gone for good';
+    var intro = 'Close the gap today and you could retire with the full ' + round(m.total) + ' in your pension. Every year it stays open, part of it is gone for good';
     var w = WAITS.filter(function(k){ return k < m.years; });
     if (w.length) intro += ': wait a year and <strong>' + round(m.lostIfWait(1)) + '</strong> is never coming back' +
       (w.length > 1 ? '; wait ' + w[1] + ' years and it’s <strong>' + round(m.lostIfWait(w[1])) + '</strong>' : '');
