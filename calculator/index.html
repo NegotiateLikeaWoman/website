@@ -410,7 +410,7 @@ var LEAD = {
   function sym(){ return SYM[cur.value] || '£'; }
   function round(n){
     if (n >= 1000000) return sym() + (Math.round(n/100000)/10) + 'm';
-    var step = n >= 100000 ? 10000 : (n >= 20000 ? 5000 : (n >= 2000 ? 1000 : 50));
+    var step = n >= 100000 ? 10000 : (n >= 20000 ? 5000 : (n >= 2000 ? 1000 : 10));
     return sym() + (Math.round(n/step)*step).toLocaleString('en-GB');
   }
 
@@ -465,7 +465,7 @@ var LEAD = {
     var m = model(); if (!m) return;
     var name = ($('fn').value || '').trim();
     $('r-kicker').textContent = name ? 'Your breakdown, ' + name : 'Your breakdown';
-    $('r-title').textContent = 'A gap of ' + round(m.g) + ' a year adds up to ' + round(m.total) + ' by the time you’re ' + m.rt + '.';
+    $('r-title').textContent = 'A gap of ' + round(m.g) + ' a year adds up to ' + round(m.total) + ' by the time you’re ' + m.rt + ', if it goes into your pension.';
     $('r-assump').textContent = 'Gap entered: ' + sym() + Number(gap.value).toLocaleString('en-GB') + ' a year. Age ' + m.ag +
       ', retiring at ' + m.rt + '. In today’s money; gap grows 1.5% a year above inflation; paid into a pension, earning 3% above inflation. Illustrative only, not financial advice.';
 
